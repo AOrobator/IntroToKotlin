@@ -45,4 +45,34 @@ fun main(args: Array<String>) {
     println("Casted Long = $castedLong")
 
     // Numbers are represented as primitives unless generics or nullability is involved.
+
+
+    /////////////////
+    /* Nullability */
+    /////////////////
+
+    var nullableFruit: String? = "Pomegranate"
+    nullableFruit = null
+
+    var nonNullFruit: String = "Grape"
+    nonNullFruit = "Apple" // Okay because it isn't null
+    // nonNullFruit = null // Compiler Error
+
+    // Safe call operator, avoids NullPointerException
+    val nullableLength: Int? = nullableFruit?.length
+    println("Nullable Length: $nullableLength")
+
+    try {
+        val nullLength:Int = nullableFruit!!.length
+    } catch (e: NullPointerException) {
+        println("Nullable fruit was null")
+    }
+
+    // Setting a variable to an expression.
+    val nonNullLength: Int = if (nullableFruit == null) 0 else nullableFruit.length
+
+    // Kotlin's Elvis operator is short form for the above
+    val nonNullLength2: Int = nullableFruit?.length ?: 0
+
+    println("nonNullLength2 = $nonNullLength2")
 }
