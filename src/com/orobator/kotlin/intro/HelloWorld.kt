@@ -106,6 +106,16 @@ fun main(args: Array<String>) {
     // Bitwise Operations: Named functions (Int and Long only)
     val bitwiseOps = ((1 and 2) or (3 xor 4)) shr 5
 
+    // Equality Checks
+    val equalityCheck0 = 1 == 2
+    val equalityCheck1 = 1 != 2
+
+    // Comparison Operators
+    val compLessThan = 1 < 2
+    val compLessThanOrEqualTo = 1 <= 2
+    val compGreaterThan = 1 > 2
+    val compGreaterThanOrEqualTO = 1 >= 2
+
 
     //////////////////////////
     /* Basic Types: Strings */
