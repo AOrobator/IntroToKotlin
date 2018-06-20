@@ -88,7 +88,7 @@ fun main(args: Array<String>) {
         println("Nullable fruit was null")
     }
 
-    // Setting a variable to an expression.
+    // Setting a variable to an expression. Also works with try/catch
     val nonNullLength: Int = if (nullableFruit == null) 0 else nullableFruit.length
 
     // Kotlin's Elvis operator is short form for the above
