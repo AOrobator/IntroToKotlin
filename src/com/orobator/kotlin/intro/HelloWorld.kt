@@ -26,9 +26,9 @@ fun main(args: Array<String>) {
     val food = "Tomato" // This is fine as well. The compiler knows this is a String
 
 
-    /////////////////
-    /* Basic Types */
-    /////////////////
+    //////////////////////////
+    /* Basic Types: Strings */
+    //////////////////////////
 
     // Can iterate over characters
     for (c in "Kotlin Rocks!") {
@@ -67,30 +67,9 @@ fun main(args: Array<String>) {
     println("Strings are equal? ${testStringIdentity1 == testStringIdentity2}")
     println("Strings are identical? ${testStringIdentity1 === testStringIdentity2}")
 
-    val myDouble: Double = 42.0 // 64 bits wide
-    val myFloat: Float = 42f // 32 bits wide
-
-    val myLong: Long = 42L // 64 bits wide
-    val myInt: Int = 42 // 32 bits wide
-    val myShort: Short = 42 // 16 bits wide
-    val myByte: Byte = 42 // 8 bits wide
-
-    val hexadecimalInt: Int = 0x0F
-    val binaryLong: Long = 0b101
-    val oneMillion = 1_000_000
-
-    // Everything is an object! Smaller types not subtypes of larger types.
-
-    // val impossible: Long = myInt
-    val castedLong: Long = myInt.toLong()
-    println("Casted Long = $castedLong")
-
-    // Numbers are represented as primitives unless generics or nullability is involved.
-
-
-    /////////////////
-    /* Nullability */
-    /////////////////
+    //////////////////////////////
+    /* Basic Types: Nullability */
+    //////////////////////////////
 
     var nullableFruit: String? = "Pomegranate"
     nullableFruit = null
@@ -116,4 +95,39 @@ fun main(args: Array<String>) {
     val nonNullLength2: Int = nullableFruit?.length ?: 0
 
     println("nonNullLength2 = $nonNullLength2")
+
+
+    //////////////////////////
+    /* Basic Types: Numbers */
+    //////////////////////////
+
+    val myDouble: Double = 42.0 // 64 bits wide
+    val myFloat: Float = 42f // 32 bits wide
+
+    val myLong: Long = 42L // 64 bits wide
+    val myInt: Int = 42 // 32 bits wide
+    val myShort: Short = 42 // 16 bits wide
+    val myByte: Byte = 42 // 8 bits wide
+
+    val hexadecimalInt: Int = 0x0F
+    val binaryLong: Long = 0b101
+    val oneMillion = 1_000_000
+
+    // Everything is an object! Smaller types not subtypes of larger types.
+
+    // val impossible: Long = myInt
+    val castedLong: Long = myInt.toLong()
+    println("Casted Long = $castedLong")
+
+    // Numbers are represented as primitives unless generics or nullability is involved.
+    // Boxing doesn't necessarily preserve identity
+
+    val a: Int = 10000
+    println("a identical to itself? ${a === a}") // Prints 'true'
+    val boxedA: Int? = a
+    val anotherBoxedA: Int? = a
+    println("boxedA identical to anotherBoxedA? ${boxedA === anotherBoxedA}") // !!!Prints 'false'!!!
+
+    // However, it does preserve equality
+    println("boxedA equal to anotherBoxedA? ${boxedA == anotherBoxedA}") // Print true
 }
