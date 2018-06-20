@@ -62,6 +62,11 @@ fun main(args: Array<String>) {
 
     println("Without margins:\n$withoutMargins")
 
+    val testStringIdentity1 = "Foo"
+    val testStringIdentity2 = testStringIdentity1[0] + "oo"
+    println("Strings are equal? ${testStringIdentity1 == testStringIdentity2}")
+    println("Strings are identical? ${testStringIdentity1 === testStringIdentity2}")
+
     val myDouble: Double = 42.0 // 64 bits wide
     val myFloat: Float = 42f // 32 bits wide
 
