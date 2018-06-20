@@ -100,6 +100,12 @@ fun main(args: Array<String>) {
     1.toDouble()
     1.toChar()
 
+    // Arithmetic Operations: All numbers support basic operations
+    val arithmetic = 1 + 2 * 3 - 4 % 5
+
+    // Bitwise Operations: Named functions (Int and Long only)
+    val bitwiseOps = ((1 and 2) or (3 xor 4)) shr 5
+
 
     //////////////////////////
     /* Basic Types: Strings */
