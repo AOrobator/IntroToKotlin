@@ -91,6 +91,15 @@ fun main(args: Array<String>) {
     // However, it does preserve equality
     println("boxedA equal to anotherBoxedA? ${boxedA == anotherBoxedA}") // Print true
 
+    // Every number type supports casting to other number types and Char
+    1.toByte()
+    1.toShort()
+    1L.toInt()
+    1.toLong()
+    1.toFloat()
+    1.toDouble()
+    1.toChar()
+
 
     //////////////////////////
     /* Basic Types: Strings */
