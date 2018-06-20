@@ -25,48 +25,6 @@ fun main(args: Array<String>) {
     val pet: String = "Husky" // Can optionally specify the type
     val food = "Tomato" // This is fine as well. The compiler knows this is a String
 
-
-    //////////////////////////
-    /* Basic Types: Strings */
-    //////////////////////////
-
-    // Can iterate over characters
-    for (c in "Kotlin Rocks!") {
-        print(c)
-    }
-    println()
-
-    // String concatenation
-    val concatString0 = "Two " + "strings"
-    println("concatString0: $concatString0")
-
-    val concatString1 = "String and Int" + 42
-    println("concatString1: $concatString1")
-
-    val stringTemplate = "Template ${14 + 28}"
-    println("stringTemplate: $stringTemplate")
-
-    val rawString = """
-        for (c in "foo")
-            print(c)
-
-        // Looks like a comment, but is still in the string.
-        """
-
-    println("Raw String:\n $rawString")
-
-    val withoutMargins = """ABC
-                           |123
-                           |456
-         """.trimMargin() // prints ABC\n123\n456
-
-    println("Without margins:\n$withoutMargins")
-
-    val testStringIdentity1 = "Foo"
-    val testStringIdentity2 = testStringIdentity1[0] + "oo"
-    println("Strings are equal? ${testStringIdentity1 == testStringIdentity2}")
-    println("Strings are identical? ${testStringIdentity1 === testStringIdentity2}")
-
     //////////////////////////////
     /* Basic Types: Nullability */
     //////////////////////////////
@@ -113,8 +71,10 @@ fun main(args: Array<String>) {
     val binaryLong: Long = 0b101
     val oneMillion = 1_000_000
 
-    // Everything is an object! Smaller types not subtypes of larger types.
+    // Everything is an object!
+    // Char is not a Number
 
+    // Smaller types not subtypes of larger types, due to different representations.
     // val impossible: Long = myInt
     val castedLong: Long = myInt.toLong()
     println("Casted Long = $castedLong")
@@ -130,4 +90,46 @@ fun main(args: Array<String>) {
 
     // However, it does preserve equality
     println("boxedA equal to anotherBoxedA? ${boxedA == anotherBoxedA}") // Print true
+
+
+    //////////////////////////
+    /* Basic Types: Strings */
+    //////////////////////////
+
+    // Can iterate over characters
+    for (c in "Kotlin Rocks!") {
+        print(c)
+    }
+    println()
+
+    // String concatenation
+    val concatString0 = "Two " + "strings"
+    println("concatString0: $concatString0")
+
+    val concatString1 = "String and Int" + 42
+    println("concatString1: $concatString1")
+
+    val stringTemplate = "Template ${14 + 28}"
+    println("stringTemplate: $stringTemplate")
+
+    val rawString = """
+        for (c in "foo")
+            print(c)
+
+        // Looks like a comment, but is still in the string.
+        """
+
+    println("Raw String:\n $rawString")
+
+    val withoutMargins = """ABC
+                           |123
+                           |456
+         """.trimMargin() // prints ABC\n123\n456
+
+    println("Without margins:\n$withoutMargins")
+
+    val testStringIdentity1 = "Foo"
+    val testStringIdentity2 = testStringIdentity1[0] + "oo"
+    println("Strings are equal? ${testStringIdentity1 == testStringIdentity2}")
+    println("Strings are identical? ${testStringIdentity1 === testStringIdentity2}")
 }
