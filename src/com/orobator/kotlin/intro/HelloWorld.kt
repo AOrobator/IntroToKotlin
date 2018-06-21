@@ -116,6 +116,18 @@ fun main(args: Array<String>) {
     val compGreaterThan = 1 > 2
     val compGreaterThanOrEqualTO = 1 >= 2
 
+    // Ranges
+    println("2 in range of 1..4: ${2 in 1..4}")
+    println("4 in range of 1..4: ${4 in 1..4}")
+    println("4 in range of 1 until 4: ${4 in 1 until 4}") // end not inclusive
+    println("5 not in range of 1..4: ${5 !in 1..4}")
+
+    for (i in 0..2) println("Going up, iteration $i")
+
+    for (i in 2 downTo 0) println("Going down, iteration $i")
+
+    for (i in 0..4 step 2) println("Skipping steps, iteration $i")
+
 
     //////////////////////////
     /* Basic Types: Strings */
