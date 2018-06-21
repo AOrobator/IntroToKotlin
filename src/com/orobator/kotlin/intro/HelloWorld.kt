@@ -25,6 +25,7 @@ fun main(args: Array<String>) {
     val pet: String = "Husky" // Can optionally specify the type
     val food = "Tomato" // This is fine as well. The compiler knows this is a String
 
+
     //////////////////////////////
     /* Basic Types: Nullability */
     //////////////////////////////
@@ -127,6 +128,18 @@ fun main(args: Array<String>) {
     for (i in 2 downTo 0) println("Going down, iteration $i")
 
     for (i in 0..4 step 2) println("Skipping steps, iteration $i")
+
+
+    //////////////////////////
+    /* Basic Types: Boolean */
+    //////////////////////////
+
+    val myTrueBool: Boolean = true
+    val myFalseBool: Boolean = false
+
+    // Booleans are boxed if a nullable reference is needed.
+
+    println("Kotlin is cool: ${(myTrueBool || myFalseBool) && !myFalseBool}")
 
 
     ///////////////////////
