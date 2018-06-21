@@ -129,6 +129,17 @@ fun main(args: Array<String>) {
     for (i in 0..4 step 2) println("Skipping steps, iteration $i")
 
 
+    ///////////////////////
+    /* Basic Types: Char */
+    ///////////////////////
+
+    // Char can't be treated as a number
+
+    val myChar: Char = 'a' // Literals go in single quotes
+
+    // Can be used in ranges
+    println("myChar in 'a'..'z': ${myChar in 'a'..'z'}")
+
     //////////////////////////
     /* Basic Types: Strings */
     //////////////////////////
