@@ -153,6 +153,7 @@ fun main(args: Array<String>) {
     // Can be used in ranges
     println("myChar in 'a'..'z': ${myChar in 'a'..'z'}")
 
+
     //////////////////////////
     /* Basic Types: Strings */
     //////////////////////////
@@ -172,6 +173,7 @@ fun main(args: Array<String>) {
 
     val stringTemplate = "Template ${14 + 28}"
     println("stringTemplate: $stringTemplate")
+    println("stringTemplate is ${stringTemplate.length} chars long")
 
     val rawString = """
         for (c in "foo")
@@ -190,7 +192,33 @@ fun main(args: Array<String>) {
     println("Without margins:\n$withoutMargins")
 
     val testStringIdentity1 = "Foo"
-    val testStringIdentity2 = testStringIdentity1[0] + "oo"
+    val testStringIdentity2 = testStringIdentity1[0] + "oo" // Can index strings
     println("Strings are equal? ${testStringIdentity1 == testStringIdentity2}")
     println("Strings are identical? ${testStringIdentity1 === testStringIdentity2}")
+
+    // Tons of String extension functions - https://kotlinlang.org/api/latest/jvm/stdlib/kotlin/-string/index.html
+
+    val blankString: String? = "\t\t\t\t"
+    println("Is blankString blank? ${blankString.isNullOrBlank()}")
+    println("Ignoring case, are these equal? ${"Rabbit".equals("rAbBiT", ignoreCase = true)}")
+
+
+    ////////////
+    /* Arrays */
+    ////////////
+
+    val myStringArray: Array<String> = arrayOf("foo", "bar")
+    val myNullStringArray: Array<String?> = arrayOfNulls(3)
+
+    // Creates an Array<String> with values ["0", "1", "4", "9", "16"]
+    val squares = Array(5, { i -> (i * i).toString() })
+
+    println("Size of squares = ${squares.size}")
+    println("squares[3] = ${squares[3]}")
+
+    // Specialized classes for primitive types to avoid boxing
+    // No inheritance relation to Array, but has same methods & properties
+
+    val myIntArray: IntArray = intArrayOf(1, 2, 3)
+    myIntArray[0] = myIntArray[1] + myIntArray[2]
 }
