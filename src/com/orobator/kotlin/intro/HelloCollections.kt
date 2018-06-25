@@ -16,8 +16,16 @@ fun main(args: Array<String>) {
     val readOnlyView: List<Int> = mutableInts
     println("readOnlyView size: ${readOnlyView.size}") // prints 3
 
+    // Can prevent changes by copying the list
+    val readyOnlyCopy: List<Int> = mutableInts.toList()
+    println("readyOnlyCopy size: ${readyOnlyCopy.size}")
+
+    println("\nClearing mutable list...\n")
     mutableInts.clear()
     println("readOnlyView size: ${readOnlyView.size}") // prints 0!
+    println("readyOnlyCopy size: ${readyOnlyCopy.size}") // prints 3!
+
+    println()
 
     // Different ways to create a list
     val zeroToNine: List<Int> = List(size = 10, init = { it })
@@ -32,5 +40,21 @@ fun main(args: Array<String>) {
 
     // List Concatenation
     val concat = listOf(1, 2) + listOf(3, 4)
-    println("concat: $concat")
+    println("concat: $concat\n")
+
+
+    //////////
+    /* Maps */
+    //////////
+
+    // Also immutable by default
+    val alphaMap: Map<String, Int> = mapOf("a" to 1, "b" to 2, "c" to 3) // Only use in non-critical codepaths
+    for ((k, v) in alphaMap) {
+        println("Key: $k, Value: $v")
+    }
+
+    val readWriteMap = hashMapOf("foo" to 1, "bar" to 2)
+    println(readWriteMap["foo"])  // prints "1"
+    val snapshot: Map<String, Int> = HashMap(readWriteMap)
+
 }
