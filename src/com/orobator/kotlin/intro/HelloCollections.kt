@@ -27,6 +27,9 @@ fun main(args: Array<String>) {
 
     println()
 
+    // Read only types are covariant
+    val superList: List<Any> = listOfInts
+
     // Different ways to create a list
     val zeroToNine: List<Int> = List(size = 10, init = { it })
     println("zeroToNine: $zeroToNine")
