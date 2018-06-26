@@ -56,8 +56,10 @@ fun main(args: Array<String>) {
     val readWriteMap = hashMapOf("foo" to 1, "bar" to 2)
     println("readWriteMap[\"foo\"]: ${readWriteMap["foo"]}")  // prints "1"
 
+    val snapshot: Map<String, Int> = HashMap(readWriteMap)
+
     readWriteMap["foo"] = 42
     println("readWriteMap[\"foo\"]: ${readWriteMap["foo"]}")  // prints "42"
-    val snapshot: Map<String, Int> = HashMap(readWriteMap)
+    println("snapshot[\"foo\"]: ${snapshot["foo"]}")  // prints "1"
 
 }
