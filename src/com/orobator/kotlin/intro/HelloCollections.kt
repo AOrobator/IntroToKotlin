@@ -56,6 +56,8 @@ fun main(args: Array<String>) {
         println("Key: $k, Value: $v")
     }
 
+    println()
+
     val readWriteMap = hashMapOf("foo" to 1, "bar" to 2)
     println("readWriteMap[\"foo\"]: ${readWriteMap["foo"]}")  // prints "1"
 
@@ -64,5 +66,23 @@ fun main(args: Array<String>) {
     readWriteMap["foo"] = 42
     println("readWriteMap[\"foo\"]: ${readWriteMap["foo"]}")  // prints "42"
     println("snapshot[\"foo\"]: ${snapshot["foo"]}")  // prints "1"
+
+
+    //////////
+    /* Sets */
+    //////////
+
+    val intSet: Set<Int> = setOf(1, 2, 3)
+    println("4 in intSet: ${4 in intSet}\n")
+
+    val mutableSet = mutableSetOf(2, 4, 6, 8)
+    println("mutableSet: $mutableSet")
+    mutableSet.add(10)
+    println("mutableSet: $mutableSet")
+    mutableSet.add(12)
+    println("mutableSet: $mutableSet\n")
+
+    val filtered: List<Int> = mutableSet.filter { it % 3 == 0 }
+    println("filtered: $filtered")
 
 }
