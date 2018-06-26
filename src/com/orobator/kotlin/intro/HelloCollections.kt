@@ -48,13 +48,16 @@ fun main(args: Array<String>) {
     //////////
 
     // Also immutable by default
-    val alphaMap: Map<String, Int> = mapOf("a" to 1, "b" to 2, "c" to 3) // Only use in non-critical codepaths
+    val alphaMap: Map<String, Int> = mapOf("a" to 1, "b" to 2, "c" to 3) // Only use in non-critical code-paths
     for ((k, v) in alphaMap) {
         println("Key: $k, Value: $v")
     }
 
     val readWriteMap = hashMapOf("foo" to 1, "bar" to 2)
-    println(readWriteMap["foo"])  // prints "1"
+    println("readWriteMap[\"foo\"]: ${readWriteMap["foo"]}")  // prints "1"
+
+    readWriteMap["foo"] = 42
+    println("readWriteMap[\"foo\"]: ${readWriteMap["foo"]}")  // prints "42"
     val snapshot: Map<String, Int> = HashMap(readWriteMap)
 
 }
