@@ -98,4 +98,18 @@ fun main(args: Array<String>) {
 
     list.forEach { println("For each $it") }
 
+
+    // While/Do-while loops
+    var i = 10
+    while (i > 0) {
+        i--
+    }
+
+
+    do {
+        i++
+    } while (i < 5)
+
+    println("i = $i")
+
 }
