@@ -1,4 +1,4 @@
-package com.orobator.kotlin.intro
+package com.orobator.kotlin.intro.lesson1
 
 fun main(args: Array<String>) {
 
