@@ -112,4 +112,38 @@ fun main(args: Array<String>) {
 
     println("i = $i")
 
+    i = 10
+
+    // Labeled loops
+    outer@ while (i > 0) {
+        i--
+
+        if (i % 2 == 0) {
+            continue
+        } else {
+            println("$i is odd")
+        }
+
+        for (k in 1..3) {
+            if (k * i == 6) {
+                break@outer
+            }
+        }
+    }
+
+    println()
+
+    // Return at labels
+    (1..4).forEach loop@{
+        if (it == 2) return@loop
+        println("Explicit labeled return $it")
+    }
+
+    println()
+
+    listOf(1, 2, 3, 4).forEach {
+        if (it == 2) return@forEach
+        println("Implicit labeled return $it")
+    }
+
 }
