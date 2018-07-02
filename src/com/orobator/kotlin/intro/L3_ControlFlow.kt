@@ -35,7 +35,7 @@ fun main(args: Array<String>) {
         else -> 12 // Must have else as expression unless compiler can tell that all cases are covered (enums and sealed classes)
     }
 
-    // When statements don't "fall through"
+    // When statements don't "fall through", no break statement needed.
     // Have to explicitly state when you want multiple conditions to map to the same logic
     var animal = "Husky"
     when (animal) {
