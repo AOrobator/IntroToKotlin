@@ -188,6 +188,23 @@ fun main(args: Array<String>) {
 
     println("Raw String:\n $rawString")
 
+    val rawJsonString = """
+        {
+          "users": [
+            {
+              "id": 0,
+              "name": "Adam",
+            },
+            {
+              "id": 1,
+              "name": "Leanne",
+            }
+          ],
+        }
+    """.trimIndent()
+
+    println(rawJsonString)
+
     val withoutMargins = """ABC
                            |123
                            |456
