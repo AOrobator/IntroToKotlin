@@ -1,4 +1,4 @@
-package com.orobator.kotlin.intro
+package com.orobator.kotlin.intro.lesson0
 
 /**
  * @param args Command Line arguments
@@ -54,6 +54,8 @@ fun main(args: Array<String>) {
     val nonNullLength2: Int = nullableFruit?.length ?: 0
 
     println("nonNullLength2 = $nonNullLength2")
+
+    // Lab 0
 
 
     //////////////////////////
