@@ -1,4 +1,4 @@
-package com.orobator.kotlin.intro
+package com.orobator.kotlin.intro.lesson3
 
 import java.lang.Integer.parseInt
 
