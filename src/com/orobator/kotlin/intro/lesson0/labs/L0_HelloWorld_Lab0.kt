@@ -1,4 +1,4 @@
-package com.orobator.kotlin.intro.lesson0
+package com.orobator.kotlin.intro.lesson0.labs
 
 fun main(args: Array<String>) {
 //    Uncomment and fix the compile errors

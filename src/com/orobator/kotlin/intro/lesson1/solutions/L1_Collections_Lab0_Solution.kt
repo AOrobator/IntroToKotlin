@@ -1,4 +1,4 @@
-package com.orobator.kotlin.intro.lesson1
+package com.orobator.kotlin.intro.lesson1.solutions
 
 fun main(args: Array<String>) {
     // Declare a list of the first 1000 natural numbers

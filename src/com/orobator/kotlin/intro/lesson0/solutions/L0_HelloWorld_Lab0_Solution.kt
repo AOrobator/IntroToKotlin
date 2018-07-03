@@ -1,4 +1,4 @@
-package com.orobator.kotlin.intro.lesson0
+package com.orobator.kotlin.intro.lesson0.solutions
 
 fun main(args: Array<String>) {
 //    Uncomment and fix the compile errors
@@ -9,5 +9,5 @@ fun main(args: Array<String>) {
 
     var bar: String? = "foo"
     println("bar's length = ${bar?.length}")
-    var barLen: Int = bar?.length ?: 0// Keep barLen non-nullable
+    var barLen: Int = bar?.length ?: 0 // Keep barLen non-nullable
 }
