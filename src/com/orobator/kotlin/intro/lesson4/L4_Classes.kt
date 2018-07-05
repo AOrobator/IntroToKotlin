@@ -18,6 +18,13 @@ fun main(args: Array<String>) {
 
         // Constructor args can be accessed by both init blocks and properties
         val customerKey: String = name.toUpperCase()
+
+        // Secondary constructors are specified with constructor keyword
+        // Must call the primary constructor via this keyword
+        // this keyword works the same as it does in Java
+        constructor(name: String, address: String) : this(name) {
+            println("Customer submitted address")
+        }
     }
 
     // Initializer blocks are executed in the same order
