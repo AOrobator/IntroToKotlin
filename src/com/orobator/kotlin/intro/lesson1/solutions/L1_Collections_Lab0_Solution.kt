@@ -1,14 +1,14 @@
 package com.orobator.kotlin.intro.lesson1.solutions
 
 fun main(args: Array<String>) {
-    // Declare a list of the first 1000 natural numbers
-    val numbers = List(size = 1000) { it }
+    // Declare an immutable list of the first positive 1000 natural numbers
+    val numbers = List(size = 1000) { it + 1 }
 
-    // Filter the list to the first 26 natural numbers
-    val first26 = numbers.filter { it < 26 }
+    // Declare an immutable list that filters the previous list to the first 26 natural numbers
+    val first26 = numbers.filter { it < 27 }
 
-    // Map the list to the alphabet
-    val alphabet = first26.map { (it + 65).toChar() }
+    // Declare an immutable list that maps the previous list to the alphabet
+    val alphabet = first26.map { (it + 64).toChar() }
     println(alphabet)
 
     // Update the value for key "a" to 42

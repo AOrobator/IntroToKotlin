@@ -1,0 +1,23 @@
+Class Runtime: 9:30am - 4:30pm
+
+08:30 - Arrival/Tech setup
+09:30 - Personal Intro
+09:35 - DI Intro
+09:40 - What do they know/want to cover
+09:50 - Kotlin Overview (Slides)
+10:00 - Lesson 0: Hello World/String interpolation
+10:05 - Lesson 0: val vs var, type inference, nullability
+10:25 - Lesson 0: Lab 0
+10:40 - Lesson 0: Numbers, Ranges, Loops
+11:10 - Lesson 0: Lab 1
+11:20 - Lesson 0: Boolean, Char, Strings, Arrays
+11:40 - Lesson 0: Lab 2
+12:00 - Lunch
+13:00 - Lesson 1: Collections
+13:20 - Lesson 1: Lab 0
+13:40 - Lesson 2: Functions
+14:00 - Lesson 2: Lab0, ConvertMe
+14:15 - Break
+14:30 - Lesson 3: Control Flow
+14:50 - Lesson 3: Lab 0
+

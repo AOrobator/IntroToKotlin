@@ -1,4 +1,4 @@
-package com.orobator.kotlin.intro.lesson3.solution
+package com.orobator.kotlin.intro.lesson3.solutions
 
 // Write a method that calculates the nth 2 digit prime
 fun main(args: Array<String>) {
