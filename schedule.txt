@@ -12,6 +12,7 @@ Class Runtime: 9:30am - 4:30pm
 11:10 - Lesson 0: Lab 1
 11:20 - Lesson 0: Boolean, Char, Strings, Arrays
 11:40 - Lesson 0: Lab 2
+11:55 - Attendance
 12:00 - Lunch
 13:00 - Lesson 1: Collections
 13:20 - Lesson 1: Lab 0
@@ -23,4 +24,5 @@ Class Runtime: 9:30am - 4:30pm
 15:05 - Lesson 4: Classes
 15:15 - Lesson 5: Properties
 15:35 - Lesson 5: Lab 0
-15:45 -
+15:45 - Lesson 6: Visibility
+15:55 - Lesson 7: Inheritance
