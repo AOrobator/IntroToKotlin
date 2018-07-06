@@ -50,6 +50,19 @@ fun main(args: Array<String>) {
     // concise syntax: just use val or var.
     class Smartphone(val manufacturer: String, var hasCase: Boolean)
 
+    // You can simulate multiple constructors by providing default values for properties
+    // Add the @JvmOverloads annotation to create multiple constructors for Java consumption
+    class Vehicle(val numWheels: Int = 4)
+
+    val car = Vehicle()
+
+    println("A car has ${car.numWheels} wheels")
+
+    // Can optionally specify name of parameter.
+    // Goes for function calls as well.
+    val motorcycle = Vehicle(numWheels = 2)
+    println("A motorcycle has ${motorcycle.numWheels} wheels")
+
     // Properties can also be declared in the class body
     class Headphones {
         // Same within functions: val -> read-only, var -> read/write
