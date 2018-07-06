@@ -43,6 +43,17 @@ fun main(args: Array<String>) {
         }
     }
 
-    // No new keyword needed to create an object
+    // No "new" keyword needed to create an object, unlike Java
     val initOrderDemo = InitOrderDemo("Hello")
+
+    // To declare and initialize properties in the constructor, Kotlin has a
+    // concise syntax: just use val or var.
+    class Smartphone(val manufacturer: String, var hasCase: Boolean)
+
+    // Properties can also be declared in the class body
+    class Headphones {
+        // Same within functions: val -> read-only, var -> read/write
+        val manufacturer: String = "Shure"
+        var inEar = false
+    }
 }
