@@ -20,5 +20,7 @@ Class Runtime: 9:30am - 4:30pm
 14:15 - Break
 14:30 - Lesson 3: Control Flow
 14:50 - Lesson 3: Lab 0
-15:05 - Lesson 4A: Classes
-15:15 - Lesson 4B: Properties
+15:05 - Lesson 4: Classes
+15:15 - Lesson 5: Properties
+15:35 - Lesson 5: Lab 0
+15:45 -

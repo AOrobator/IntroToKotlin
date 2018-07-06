@@ -1,4 +1,4 @@
-package com.orobator.kotlin.intro.lesson4.labs;
+package com.orobator.kotlin.intro;
 
 // Convert this class to Kotlin
 public class Person {

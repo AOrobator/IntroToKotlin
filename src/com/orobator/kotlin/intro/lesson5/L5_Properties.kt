@@ -1,4 +1,4 @@
-package com.orobator.kotlin.intro.lesson4
+package com.orobator.kotlin.intro.lesson5
 
 // You can't declare a field in Kotlin!
 // When declaring a Kotlin property, setters and getters (accessors) are
