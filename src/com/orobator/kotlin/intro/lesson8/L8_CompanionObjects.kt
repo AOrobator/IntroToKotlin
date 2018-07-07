@@ -10,9 +10,14 @@ class MyActivity : Activity() {
 
     // Goes at the bottom of the class by convention.
     companion object {
-        fun getIntent(context: Context, x: Int, y: Int): Intent = Intent(context)
+        // Everything here may look static, but they're all instance members of objects
+
+        // Constants are in capital snake case.
+        val ACTION_FOO = "com.example.foo"
+
+        // Use const word
+        const val ACTION_BAR = "com.example.bar"
+
+        fun getIntent(context: Context, x: Int, y: Int): Intent = Intent(context, ACTION_BAR)
     }
 }
-
-
-//const

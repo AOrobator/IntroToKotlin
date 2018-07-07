@@ -23,7 +23,9 @@ fun main(args: Array<String>) {
     when (weather) {
         "Sunny" -> println("Bring your shades!")
         "Rainy" -> println("Bring an umbrella!")
-        else -> { // Can optionally use a block
+        else -> {
+            // Can optionally use a block, but style-wise try to keep to a
+            // single line. You can refactor into functions to achieve this.
             println("Better grab a hoodie just in case")
         }
     }
