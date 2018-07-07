@@ -1,4 +1,4 @@
-Class Runtime: 9:30am - 4:30pm
+Day 1 Class Runtime: 9:30am - 4:30pm
 
 08:30 - Arrival/Tech setup
 09:30 - Personal Intro
@@ -27,3 +27,11 @@ Class Runtime: 9:30am - 4:30pm
 15:45 - Lesson 6: Visibility
 15:55 - Lesson 7: Inheritance
 16:25 - Mid Class Survey
+
+Day 2 Class Runtime: 9:30am - 4:30pm
+
+09:30 - Review
+09:45 - Companion Objects
+11:55 - Attendance
+12:00 - Lunch
+16:00 - End of class survey
