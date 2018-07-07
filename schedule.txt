@@ -35,6 +35,7 @@ Day 2 Class Runtime: 9:30am - 4:30pm
 09:55 - Lesson 9: Objects
 10:15 - Lesson 9: Lab 0
 10:25 - Lesson 10: Interfaces
+10:35 - Lesson 11: Data classes
 11:55 - Attendance
 12:00 - Lunch
 16:00 - End of class survey
