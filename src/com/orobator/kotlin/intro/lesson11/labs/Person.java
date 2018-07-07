@@ -1,6 +1,8 @@
-package com.orobator.kotlin.intro;
+package com.orobator.kotlin.intro.lesson11.labs;
 
 // Convert this class to Kotlin
+// Hint: Use CMD+Shift+A on mac or CTRL+SHIFT+A for Windows/Linux
+//         -> Convert Java code to Kotlin
 public class Person {
     private String firstName;
     private String lastName;
