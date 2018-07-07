@@ -32,6 +32,7 @@ Day 2 Class Runtime: 9:30am - 4:30pm
 
 09:30 - Day 1 Review
 09:45 - Companion Objects
+09:55 -
 11:55 - Attendance
 12:00 - Lunch
 16:00 - End of class survey
