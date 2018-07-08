@@ -38,6 +38,7 @@ Day 2 Class Runtime: 9:30am - 4:30pm
 10:35 - Lesson 11: Data classes
 10:45 - Lesson 11: Lab 0
 11:00 - Lesson 12: Enums
+11:15 - Lesson 13: Sealed Classes
 11:55 - Attendance
 12:00 - Lunch
 16:00 - End of class survey
