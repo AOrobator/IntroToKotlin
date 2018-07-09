@@ -43,5 +43,5 @@ Day 2 Class Runtime: 9:30am - 4:30pm
 11:55 - Attendance
 12:00 - Lunch
 13:00 - Lesson 14: Inner Classes
-13:05 -
+13:05 - Lesson 15: Exception Handling
 16:00 - End of class survey
