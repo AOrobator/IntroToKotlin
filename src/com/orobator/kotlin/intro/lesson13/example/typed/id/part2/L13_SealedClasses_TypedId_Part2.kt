@@ -1,6 +1,6 @@
-package com.orobator.kotlin.intro.lesson13.typed.id.example.part2
+package com.orobator.kotlin.intro.lesson13.example.typed.id.part2
 
-import com.orobator.kotlin.intro.lesson13.typed.id.example.Song
+import com.orobator.kotlin.intro.lesson13.example.typed.id.Song
 
 // Where do the sealed classes come in?
 // It’s possible for a Song to have an invalid ID if it hasn’t been added to
@@ -30,12 +30,12 @@ interface SongRepository {
 
 class SongRepositoryImpl : SongRepository {
     override fun getSongById(songId: SongId): Song? = when (songId) {
-        is ValidSongId -> getSongFromRealm(songId)
+    // Able to access id because of smartcast
+        is ValidSongId -> Song(songId.id)
         InvalidSongId -> null
-    // No else statement needed
+    // No else statement needed, but compiler will complain if new SongId
+    // subtype is created.
     }
-
-    private fun getSongFromRealm(validId: ValidSongId) = Song(validId.id)
 }
 
 // It’s worth mentioning the runtime downsides of doing this, which is the cost

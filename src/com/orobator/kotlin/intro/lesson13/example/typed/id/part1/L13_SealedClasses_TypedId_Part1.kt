@@ -1,7 +1,7 @@
-package com.orobator.kotlin.intro.lesson13.typed.id.example.part1
+package com.orobator.kotlin.intro.lesson13.example.typed.id.part1
 
-import com.orobator.kotlin.intro.lesson13.typed.id.example.Playlist
-import com.orobator.kotlin.intro.lesson13.typed.id.example.Song
+import com.orobator.kotlin.intro.lesson13.example.typed.id.Playlist
+import com.orobator.kotlin.intro.lesson13.example.typed.id.Song
 
 // Sealed classes can also be used to prevent strange bugs
 // Do you see the potential bug with this interface?

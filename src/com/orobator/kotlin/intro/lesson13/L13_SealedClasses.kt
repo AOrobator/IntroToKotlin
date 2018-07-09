@@ -6,6 +6,8 @@ package com.orobator.kotlin.intro.lesson13
 // each type. Sealed classes allow you to have multiple instances of a type
 // that can contain state.
 
+// Direct children of sealed class must be in the same file.
+
 // Toy example
 sealed class LinkedList
 
