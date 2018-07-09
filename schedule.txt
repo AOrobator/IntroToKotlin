@@ -42,4 +42,6 @@ Day 2 Class Runtime: 9:30am - 4:30pm
 11:45 - Lesson 13: Lab 0
 11:55 - Attendance
 12:00 - Lunch
+13:00 - Lesson 14: Inner Classes
+13:05 -
 16:00 - End of class survey
