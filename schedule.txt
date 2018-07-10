@@ -22,7 +22,7 @@ Day 1 Class Runtime: 9:30am - 4:30pm
 14:30 - Lesson 3: Control Flow
 14:50 - Lesson 3: Lab 0
 15:05 - Lesson 4: Classes
-15:15 - Lesson 5: Properties
+15:15 - Lesson 5: Properties // Actually ended here
 15:35 - Lesson 5: Lab 0
 15:45 - Lesson 6: Visibility
 15:55 - Lesson 7: Inheritance
@@ -30,18 +30,24 @@ Day 1 Class Runtime: 9:30am - 4:30pm
 
 Day 2 Class Runtime: 9:30am - 4:30pm
 
-09:30 - Day 1 Review
-09:45 - Lesson 8: Companion Objects
-09:55 - Lesson 9: Objects
-10:15 - Lesson 9: Lab 0
-10:25 - Lesson 10: Interfaces
-10:35 - Lesson 11: Data classes
-10:45 - Lesson 11: Lab 0
-11:00 - Lesson 12: Enums
-11:15 - Lesson 13: Sealed Classes
-11:45 - Lesson 13: Lab 0
+09:30 - Lesson 5: Properties
+09:40 - Lesson 5: Lab 0
+09:50 - Lesson 6: Visibility
+10:00 - Lesson 7: Inheritance
+10:30 - Day 1 Review
+10:45 - Lesson 8: Companion Objects
+10:55 - Lesson 9: Objects
+11:15 - Lesson 9: Lab 0
+11:25 - Lesson 10: Interfaces
+11:35 - Lesson 11: Data classes
+11:45 - Lesson 11: Lab 0
 11:55 - Attendance
 12:00 - Lunch
-13:00 - Lesson 14: Inner Classes
-13:05 - Lesson 15: Exception Handling
+13:00 - Lesson 12: Enums
+13:15 - Lesson 13: Sealed Classes
+13:45 - Lesson 13: Lab 0
+13:55 - Lesson 14: Inner Classes
+14:05 - Lesson 15: Exception Handling
+14:15 - Break
+14:30 - Lesson 16: Generics
 16:00 - End of class survey
