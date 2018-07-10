@@ -49,5 +49,9 @@ Day 2 Class Runtime: 9:30am - 4:30pm
 13:55 - Lesson 14: Inner Classes
 14:05 - Lesson 15: Exception Handling
 14:15 - Break
-14:30 - Lesson 16: Generics
+14:30 - Lesson 16: Extension Functions
+14:50 - Lesson 17: Operator Overloading
+15:05 - Lesson 17: Lab 0
+15:20 - Lesson 18: Higher Order Functions
+15:40 - Lesson 18: Lab 0
 16:00 - End of class survey
