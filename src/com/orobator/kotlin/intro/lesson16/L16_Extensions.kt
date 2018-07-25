@@ -32,7 +32,9 @@ fun intExtensionDemo() {
 }
 
 // Google is developing Android-KTX -> a library full of extensions to make
-// the Android api easier to work with.
+// the Android api easier to work with. Currently in alpha.
+
+// https://developer.android.com/kotlin/ktx
 
 // Regular Android
 fun regularAndroid() {

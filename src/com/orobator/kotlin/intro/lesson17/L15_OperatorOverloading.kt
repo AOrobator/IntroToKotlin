@@ -11,6 +11,7 @@ data class Point(val x: Int, val y: Int)
 // or an extension function.
 
 // Must use operator keyword, can only declare a predefined set of functions
+// Full List: https://kotlinlang.org/docs/reference/operator-overloading.html
 operator fun Point.unaryMinus() = Point(-x, -y)
 
 fun main(args: Array<String>) {
