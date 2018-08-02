@@ -65,9 +65,9 @@ Day 3 Class Runtime: 9:30am - 4:30pm
 10:20 - Lesson 13: Sealed Classes
 10:50 - Lesson 13: Lab 0
 11:05 - Lesson 14: Inner Classes
-11:10 - Lesson 15: Exception Handling // Needs adjustment
+11:10 - Lesson 15: Exception Handling
 11:25 - Lesson 16: Extension Functions
-11:55 - Lesson 16: Lab 0 // Need to create this
+11:55 - Lesson 16: Lab 0
 12:05 - Attendance
 12:10 - Lunch
 13:10 - Lesson 17: Operator Overloading
