@@ -1,5 +1,7 @@
 package com.orobator.kotlin.intro.lesson16
 
+import com.orobator.kotlin.intro.lesson12.solutions.Steak
+
 // Extensions
 
 // Kotlin has a feature called extensions which allow you to add functionality
@@ -151,3 +153,25 @@ class A {
 
 // Extension functions help you avoid a Utils class with a bunch of static
 // methods
+
+// Kotlin Stdlib comes with several very helpful extensions
+
+// fun <T> T.apply(f: T.() -> Unit): T { f(); return this }
+
+// Is an extension function on all types
+
+// Takes a lambda with a receiver, f. Inside the lambda, this refers to T
+
+// Can call functions and interact with T without repeated references to T
+
+// Then it returns T
+
+// without apply()
+fun cookRareSteak0(): Steak {
+    val nyStrip = Steak()
+    nyStrip.cook()
+    return nyStrip
+}
+
+// With apply()
+fun cookRareSteak() = Steak().apply { cook() }
