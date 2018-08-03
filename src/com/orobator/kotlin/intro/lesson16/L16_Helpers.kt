@@ -6,3 +6,7 @@ object sharedPreferences {
     fun putBoolean(s: String, b: Boolean) = this
     fun apply() = Unit
 }
+
+object DbConnection {
+    fun getConnection() = Unit
+}

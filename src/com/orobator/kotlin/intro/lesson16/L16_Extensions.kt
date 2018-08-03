@@ -1,6 +1,7 @@
 package com.orobator.kotlin.intro.lesson16
 
 import com.orobator.kotlin.intro.lesson12.solutions.Steak
+import java.io.FileWriter
 
 // Extensions
 
@@ -174,4 +175,57 @@ fun cookRareSteak0(): Steak {
 }
 
 // With apply()
-fun cookRareSteak() = Steak().apply { cook() }
+fun cookRareSteak(): Steak = Steak().apply { cook() }
+
+// Examples courtesy of Cedric Beust
+// http://beust.com/weblog/2015/10/30/exploring-the-kotlin-standard-library/
+class Config(var buildType: String, var version: String)
+
+val map = hashMapOf<String, Config>()
+
+// These extension functions are great for nullable types
+// They just won't run if the value is null!
+fun configurationFor(id: String) = map[id]?.apply {
+    // this refers to Config, so we can access its members
+    buildType = "DEBUG"
+    version = "1.2"
+}
+
+
+// fun <T, R> T.let(block: (T) -> R): R = block(this)
+
+// Another extension function on all types
+
+// Takes in a lambda that performs a function on T, returns R
+
+// In English, it's a scoping function
+
+// Use it for when you want to define a variable limited to a certain part of
+// your code
+
+fun letDemo() {
+    DbConnection.getConnection().let { connection ->
+        // use connection
+    }
+
+    // connection is no longer visible here
+}
+
+// fun <T : Closeable, R> T.use(block: (T) -> R): R
+
+// Kotlin's equivalent of Java's try-with-resources
+
+// Automatically closes its receiver on exit
+
+fun withoutUse() {
+    val writer = FileWriter("foo.txt")
+    try {
+        writer.write("Stuff")
+    } finally {
+        writer.close()
+    }
+}
+
+fun withUse() {
+    FileWriter("foo.txt").use { w -> w.write("Stuff") }
+}
