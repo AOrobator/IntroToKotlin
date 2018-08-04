@@ -80,3 +80,4 @@ Day 3 Class Runtime: 9:30am - 4:30pm
 15:00 - Lesson 20: Generics - Type Projections
 15:10 - Lesson 21: Generic Functions
 15:20 - Lesson 21: Lab
+15:30 - Lesson 22: Reified types
