@@ -81,5 +81,12 @@ Day 3 Class Runtime: 9:30am - 4:30pm
 15:10 - Lesson 21: Generic Functions
 15:20 - Lesson 21: Lab
 15:30 - Lesson 22: Higher-Order Functions
-16:00 - Lesson 22: Lab // Create this
+16:00 - Lesson 22: Lab
+16:15 - Mid Class Survey
+
+Day 4 Class Runtime: 9:30am - 4:30pm
+
+09:30 - Student trickle-in
+09:35 - Review
 ??:?? - Lesson 23: Reified types
+16:00 - End of class survey
