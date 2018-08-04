@@ -78,3 +78,4 @@ Day 3 Class Runtime: 9:30am - 4:30pm
 14:25 - Lesson 19: Generics - Declaration-site variance
 14:55 - Break
 15:00 - Lesson 20: Generics - Type Projections
+15:10 - Lesson 21: Generics - Functions
