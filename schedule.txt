@@ -75,4 +75,6 @@ Day 3 Class Runtime: 9:30am - 4:30pm
 13:40 - Lesson 18: Operator Overloading
 13:55 - Lesson 18: Lab
 14:10 - Break
-14:25 -
+14:25 - Lesson 19: Generics - Declaration-site variance
+14:55 - Break
+15:00 - Lesson 20: Generics - Type Projections
