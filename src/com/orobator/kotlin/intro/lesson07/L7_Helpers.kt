@@ -1,6 +1,11 @@
 package com.orobator.kotlin.intro.lesson07
 
-class Context
+import com.orobator.kotlin.intro.lesson22.ShortcutManager
+
+class Context {
+    fun getSystemService(any: Any): ShortcutManager = ShortcutManager()
+}
+
 class AttributeSet
 
 open class View {
