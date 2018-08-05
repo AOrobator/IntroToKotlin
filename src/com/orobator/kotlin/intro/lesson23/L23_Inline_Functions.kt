@@ -77,13 +77,88 @@ fun inlineProfileDemo() {
 
 // Consider the following code
 fun terriblePerformance() {
-    for (i in 1..100_000) {
-        val time = profile { print(null) }
-        print(time)
+    val time = profile {
+        for (i in 1..1_000_000) {
+            val time = profile { print("") }
+        }
     }
+    println("Not inlined profile took: $time ms")
+}
+
+fun betterPerformance() {
+    val time = inlinedProfile {
+        for (i in 1..1_000_000) {
+            val time = inlinedProfile { print("") }
+        }
+    }
+    println("Inlined profile took: $time ms")
 }
 
 // For each iteration, an function object is created to be passed into
 // profile.
 
 // Inlining would prevent this object creation.
+
+fun main(args: Array<String>) {
+    terriblePerformance()
+    betterPerformance()
+}
+
+///////////
+// noinline
+
+// In case you want only some of the lambdas passed to an inline
+// function to be inlined, you can mark some of your function
+// parameters with the noinline modifier:
+
+inline fun foo(inlined: () -> Unit, noinline notInlined: () -> Unit): Unit = TODO()
+
+// Inlinable lambdas can only be called inside the inline functions or
+// passed as inlinable arguments, but noinline ones can be manipulated
+// in any way we like: stored in fields, passed around etc.
+
+
+////////////////////
+// Non-local returns
+
+// In Kotlin, we can only use a normal, unqualified return to exit a
+// named function or an anonymous function.
+
+// This means that to exit a lambda, we have to use a label, and a
+// bare return is forbidden inside a lambda, because a lambda can not
+// make the enclosing function return:
+fun ordinaryFunction(block: () -> Unit) {
+    println("hi!")
+}
+
+fun foo1() {
+    ordinaryFunction {
+        //      return // ERROR: can not make `foo` return here
+    }
+}
+
+// But if the function the lambda is passed to is inlined, the return
+// can be inlined as well, so it is allowed:
+inline fun inlined(block: () -> Unit) {
+    println("hi!")
+}
+
+fun foo2() {
+    inlined {
+        return // OK: the lambda is inlined
+    }
+}
+
+// Such returns (located in a lambda, but exiting the enclosing
+// function) are called non-local returns.
+
+// We are used to this sort of construct in loops, which inline
+// functions often enclose:
+fun hasZeros(ints: List<Int>): Boolean {
+    ints.forEach {
+        if (it == 0) return true // returns from hasZeros
+    }
+    return false
+}
+
+// also works for map(), filter(), other stdlib functions
