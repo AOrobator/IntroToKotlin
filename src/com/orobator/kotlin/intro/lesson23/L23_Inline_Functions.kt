@@ -1,5 +1,6 @@
 package com.orobator.kotlin.intro.lesson23
 
+import com.orobator.kotlin.intro.lesson05.Foo
 import com.orobator.kotlin.intro.lesson22.solutions.profile
 
 // Inline functions
@@ -162,3 +163,32 @@ fun hasZeros(ints: List<Int>): Boolean {
 }
 
 // also works for map(), filter(), other stdlib functions
+
+////////////////////
+// Inline Properties
+
+// The inline modifier can be used on accessors of properties that
+// don't have a backing field.
+
+// You can annotate individual property accessors:
+
+val inlineFoo: Foo
+    inline get() = Foo()
+
+val regularFoo: Foo
+    get() = Foo()
+
+// The whole property can be marked inline as well
+inline var inlineAny: Any
+    get() = Any()
+    set(value) {
+        println("Set $value")
+    }
+
+fun demoInlineProperties() {
+    println(inlineFoo)
+    println(regularFoo)
+
+    val any = inlineAny
+    inlineAny = "Hello!"
+}

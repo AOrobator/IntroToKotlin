@@ -30,18 +30,17 @@ fun demoCallSite() {
 const val idealCallSite = "treeNode.findParentOfType<MyTreeNode>()"
 
 // To enable this, we'll do 2 things.
-// First, we'll inline the function
+// We'll inline the function and add a reified type parameter
 
-inline fun <T> TreeNode.inlineFindParentOfType(clazz: Class<T>): T? {
+inline fun <reified T> TreeNode.findParentOfType(): T? {
     var p = parent
-    while (p != null && !clazz.isInstance(p)) {
+    while (p != null && p !is T) {
         p = p.parent
     }
-    @Suppress("UNCHECKED_CAST")
     return p as T?
 }
 
-// When we inline a function, every time the function is called, instead of the
-// function being invoked, the code body of the function is pasted in.
-
-// This causes generated code to grow
+fun improvedCallSite() {
+    val treeNode = DefaultMutableTreeNode()
+    treeNode.findParentOfType<MyTreeNode>()
+}
