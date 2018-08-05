@@ -88,5 +88,6 @@ Day 4 Class Runtime: 9:30am - 4:30pm
 
 09:30 - Student trickle-in
 09:35 - Review
-??:?? - Lesson 23: Reified types
+09:45 - Lesson 23: Inline functions
+??:?? - Lesson 24: Reified types
 16:00 - End of class survey

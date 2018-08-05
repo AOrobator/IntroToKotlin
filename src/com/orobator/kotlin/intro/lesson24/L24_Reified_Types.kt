@@ -1,4 +1,4 @@
-package com.orobator.kotlin.intro.lesson23
+package com.orobator.kotlin.intro.lesson24
 
 import javax.swing.tree.DefaultMutableTreeNode
 import javax.swing.tree.TreeNode
