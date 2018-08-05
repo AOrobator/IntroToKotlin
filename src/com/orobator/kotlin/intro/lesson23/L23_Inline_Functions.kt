@@ -119,6 +119,22 @@ inline fun foo(inlined: () -> Unit, noinline notInlined: () -> Unit): Unit = TOD
 // in any way we like: stored in fields, passed around etc.
 
 
+//////////////
+// crossinline
+
+// If the function type you're using isn't directly called in the body,
+// but invoked in another execution context use crossinline.
+
+// This disables the non-local control flow feature inside the
+// provided lambda, and enables the code to compile.
+
+inline fun exampleFun(crossinline body: () -> Unit) {
+    Runnable {
+        body()
+    }.run()
+}
+
+
 ////////////////////
 // Non-local returns
 
