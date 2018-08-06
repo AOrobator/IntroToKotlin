@@ -90,5 +90,5 @@ Day 4 Class Runtime: 9:30am - 4:30pm
 09:35 - Review
 09:45 - Lesson 23: Inline functions
 10:00 - Lesson 24: Reified types
-10:10 - Lesson 25: Platform Types
+10:10 - Lesson 25: Kotlin/Java Inter-op
 16:00 - End of class survey
