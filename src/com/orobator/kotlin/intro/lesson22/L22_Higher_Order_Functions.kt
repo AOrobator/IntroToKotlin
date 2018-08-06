@@ -14,7 +14,6 @@ import com.orobator.kotlin.intro.lesson07.Context
 // To facilitate this, Kotlin has a family of function types to represent
 // functions and provides special language constructs like lambda expressions.
 
-
 // What is a higher-order function?
 
 // A function that takes functions as parameters or returns a function.
@@ -120,7 +119,7 @@ fun demoFunctionWithReceiverType() {
     shortcutAction(context) {
         // Can call functions of receiver type, ShortcutManager
         // `this` refers to the ShortcutManager
-        requestPinShortcut(ShortcutInfo(id = "my_shortcut"))
+        this.requestPinShortcut(ShortcutInfo(id = "my_shortcut"))
     }
 }
 
@@ -195,4 +194,84 @@ fun main1(args: Array<String>) {
     println(intPlus.invoke(1, 1))
     println(intPlus(1, 2))
     println(2.intPlus(3)) // extension-like call
+}
+
+/////////////////////////////////////////////
+// Returning a value from a lambda expression
+
+// We can explicitly return a value from the lambda using the
+// qualified return syntax.
+
+// Otherwise, the value of the last expression is implicitly returned.
+
+// Therefore, the two following snippets are equivalent:
+fun returnDemo() {
+    val ints = listOf(1, 2, 3)
+
+    ints.filter {
+        val shouldFilter = it > 0
+        shouldFilter // last line interpreted as return value
+    }
+
+    ints.filter {
+        val shouldFilter = it > 0
+        return@filter shouldFilter
+    }
+}
+
+//////////////////////////////////
+// Underscore for unused variables
+
+// If the lambda parameter is unused, you can place an underscore
+// instead of its name:
+fun underscoreDemo() {
+    val map = mapOf(1 to 2, 2 to 3, 3 to 4)
+    map.forEach { _, value -> println("$value!") }
+}
+
+// Same pattern used when destructuring a data class
+
+//////////////////////
+// Anonymous functions
+
+// One thing missing from the lambda expression syntax is the ability
+// to specify the return type of the function.
+
+// Unnecessary in most cases due to type inference.
+
+// However, if you do need to specify it explicitly,
+// you can use an alternative syntax: an anonymous function.
+
+val anon = fun(x: Int, y: Int): Int = x + y
+
+// An anonymous function looks very much like a regular function
+// declaration, except that its name is omitted.
+
+// Its body can be either an expression (as shown above) or a block:
+val anon1 = fun(x: Int, y: Int): Int {
+    return x + y
+}
+
+// The parameters and the return type are specified in the same way as
+// for regular functions, except that the parameter types can be
+// omitted if they can be inferred from context:
+fun typeOmissionDemo() {
+    val ints = listOf(1, 2, 3)
+    ints.filter(fun(item) = item > 0)
+}
+
+///////////
+// Closures
+
+// A lambda expression or anonymous function can access its closure,
+// i.e. the variables declared in the outer scope.
+
+// Unlike Java, the variables captured in the closure can be modified:
+fun closureDemo() {
+    val ints = listOf(1, 2, 3, 4)
+    var sum = 0
+    ints.filter { it > 0 }.forEach {
+        sum += it
+    }
+    print(sum)
 }
