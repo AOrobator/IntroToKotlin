@@ -65,15 +65,15 @@ Day 3 Class Runtime: 9:30am - 4:30pm
 10:20 - Lesson 13: Sealed Classes
 10:50 - Lesson 13: Lab 0
 11:05 - Lesson 14: Inner Classes
-11:10 - Lesson 15: Exception Handling
+11:10 - Lesson 15: Exception Handling // Broke for lunch here at 12:10
 11:25 - Lesson 16: Extension Functions
 12:10 - Lesson 16: Lab 0
 12:20 - Attendance
 12:25 - Lunch
 13:25 - Lesson 17: Delegates
 13:35 - Lesson 17: Lab
-13:40 - Lesson 18: Operator Overloading
-13:55 - Lesson 18: Lab
+13:40 - Lesson 18: Operator Overloading // 16:00 actual
+13:55 - Lesson 18: Lab // Ended Here
 14:10 - Break
 14:25 - Lesson 19: Generics - Declaration-site variance
 14:55 - Break
@@ -87,8 +87,16 @@ Day 3 Class Runtime: 9:30am - 4:30pm
 Day 4 Class Runtime: 9:30am - 4:30pm
 
 09:30 - Student trickle-in
-09:35 - Review
-09:45 - Lesson 23: Inline functions
-10:00 - Lesson 24: Reified types
-10:10 - Lesson 25: Kotlin/Java Inter-op
+09:45 - Review
+10:05 - Lesson 19: Generics - Declaration-site variance
+10:35 - Lesson 20: Generics - Type Projections
+10:45 - Lesson 21: Generic Functions
+10:55 - Lesson 21: Lab
+11:10 - Lesson 22: Higher-Order Functions
+11:55 - Lesson 22: Lab
+12:15 - Attendance
+12:20 - Lunch
+13:20 - Lesson 23: Inline functions
+13:35 - Lesson 24: Reified types
+13:45 - Lesson 25: Kotlin/Java Inter-op
 16:00 - End of class survey
