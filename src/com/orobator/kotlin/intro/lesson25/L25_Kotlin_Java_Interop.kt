@@ -1,15 +1,17 @@
 package com.orobator.kotlin.intro.lesson25
 
-import java.util.*
 import java.util.Calendar
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
+import kotlin.collections.ArrayList
 
 // Calling Java code from Kotlin
 
 // Kotlin is designed with Java Interoperability in mind.
 // Existing Java code can be called from Kotlin in a natural way,
 // and Kotlin code can be used from Java rather smoothly as well.
+typealias JList = ArrayList<Int>
+
 fun demo(source: List<Int>) {
     val list = ArrayList<Int>()
     // 'for'-loops work for Java collections:
@@ -42,6 +44,11 @@ fun calendarDemo() {
     if (!calendar.isLenient) {    // call isLenient()
         calendar.isLenient = true // call setLenient()
     }
+}
+
+fun main(args: Array<String>) {
+    val foo = FooBar()
+    val bar: Unit = foo.getBar()
 }
 
 // Note that, if the Java class only has a setter, it will not be
@@ -85,6 +92,8 @@ fun mockitoDemo() {
 // for them are the same as in Java.
 
 fun platformTypeDemo() {
+    val foo: String = FooBar().makeString()
+
     val list = ArrayList<String>() // non-null (constructor result)
     list.add("Item")
     val size = list.size // non-null (primitive int)
@@ -165,6 +174,10 @@ fun samDemo() {
     val executor = ThreadPoolExecutor(1, 1,1, TimeUnit.SECONDS, null)
     // Java signature: void execute(Runnable command)
     executor.execute { println("This runs in a thread pool") }
+}
+
+class KotlinClass {
+    var foo: String = ""
 }
 
 // Note that SAM conversions only work for interfaces,

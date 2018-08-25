@@ -81,8 +81,9 @@ inline fun <reified T : Any> createApi(baseUrl: String): T {
 }
 
 // Call site doesn't need type parameters if they can be inferred.
-fun demoCreateApi() {
-    val accountService: AccountService = createApi("example.com")
+fun <T> demoCreateApi() {
+    val foo = emptyArray<Int>()
+    val accountService = createApi<AccountService>("example.com")
     val checkoutService: CheckoutService = createApi("example.com")
     val inventoryService: InventoryService = createApi("example.com")
 }

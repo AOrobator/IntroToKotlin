@@ -19,3 +19,14 @@ fun contains(x: Int, list: LinkedList): Boolean = when (list) {
     is Node -> if (x == list.value) true else contains(x, list.nextNode)
     Tail -> false
 }
+
+sealed class ViewState {
+    object Loading: ViewState()
+    object Error: ViewState()
+    data class Success(val items: List<Int>): ViewState()
+}
+
+sealed class Result {
+    data class Fail(val e: Exception): Result()
+    data class Success(val i: Int): Result()
+}

@@ -30,9 +30,9 @@ fun copy(src: Array<Any>, dst: Array<Any>) {
 }
 
 fun main(args: Array<String>) {
-    val ints: Array<Int> = arrayOf(1, 2, 3)
-    val any = Array<Any>(3) { "" }
-//  copy(ints, any) // Error: expects (Array<Any>, Array<Any>)
+    val ints: Array<Int> = arrayOf(1, 2, 3) // src
+    val any = Array<Any>(3) { "" } // dst
+    typeSafeCopy(ints, any) // Error: expects (Array<Any>, Array<Any>)
 }
 
 // Array<T> is invariant in T

@@ -66,12 +66,12 @@ class Example {
     var p: String by Delegate()
 }
 
-fun main(args: Array<String>) {
-    val e = Example()
-    println(e.p)
-
-    e.p = "NEW"
-}
+//fun main(args: Array<String>) {
+//    val e = Example()
+//    println(e.p)
+//
+//    e.p = "NEW"
+//}
 
 // A more practical example
 class StringBundleDelegate {
@@ -157,4 +157,41 @@ class Piano {
     var numKeys: Int by Delegates.vetoable(88) { property, oldValue, newValue ->
         newValue in 0..100
     }
+}
+
+class StringMapDelegate(val map: MutableMap<String, String?>) {
+    operator fun getValue(thisRef: Customer, property: KProperty<*>): String? {
+        return map[property.name]
+    }
+
+    operator fun setValue(thisRef: Customer, property: KProperty<*>, value: String?) {
+        map[property.name] = value
+    }
+}
+
+class Customer(val map: MutableMap<String, String?>) {
+    var firstName: String? by StringMapDelegate(map)
+    val lastName: String? by StringMapDelegate(map)
+}
+
+fun main(args: Array<String>) {
+    val map = mutableMapOf<String, String?>(
+            "firstName" to "John",
+            "lastName" to "Adams"
+    )
+    val customer = Customer(map)
+
+    println(customer.firstName)
+
+    map["firstName"] = "Adam"
+
+    println(customer.firstName)
+
+    println(customer.lastName)
+    map["lastName"] = "Crews"
+    println(customer.lastName)
+//    customer.lastName = ""
+
+
+
 }

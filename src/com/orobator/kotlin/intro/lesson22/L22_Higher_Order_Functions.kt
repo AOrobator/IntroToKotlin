@@ -26,17 +26,19 @@ import com.orobator.kotlin.intro.lesson07.Context
 // its return value by consecutively combining current accumulator value with
 // each collection element, replacing the accumulator:
 
-fun <T, R> Collection<T>.fold(
-        initial: R,
-        combine: (acc: R, nextElement: T) -> R
-): R {
-    var accumulator: R = initial
-    for (element: T in this) {
-        // Passed in function is called here
-        accumulator = combine(accumulator, element)
-    }
-    return accumulator
-}
+inline fun sum(x: Int, y: Int) = x + y
+
+//fun <T, R> Collection<T>.fold(
+//        initial: R,
+//        combine: (acc: R, nextElement: T) -> R
+//): R {
+//    var accumulator: R = initial
+//    for (element: T in this) {
+//        // Passed in function is called here
+//        accumulator = combine(accumulator, element)
+//    }
+//    return accumulator
+//}
 
 // The parameter combine has a function type (R, T) -> R, so it accepts a
 // function that takes two arguments of types R and T and returns a value
@@ -46,32 +48,32 @@ fun <T, R> Collection<T>.fold(
 // argument, and lambda expressions are widely used for this purpose at
 // higher-order function call sites:
 
-fun main(args: Array<String>) {
-    val items = listOf(1, 2, 3, 4, 5)
-
-    // Lambdas are code blocks enclosed in curly braces.
-    items.fold(0, {
-        // When a lambda has parameters, they go first, followed by '->'
-        acc: Int, i: Int ->
-        print("acc = $acc, i = $i, ")
-        val result = acc + i
-        println("result = $result")
-        // The last expression in a lambda is considered the return value:
-        result
-    })
-
-    // When the last parameter of a function is a function type, we can
-    // put the lambda expression outside of the parentheses.
-
-    // Parameter types in a lambda are optional if they can be inferred:
-    val joinedToString = items.fold("Elements:", { acc, i -> "$acc $i" })
-
-    // Function references can also be used for higher-order function calls:
-    val product = items.fold(1, Int::times)
-
-    println("joinedToString = $joinedToString")
-    println("product = $product")
-}
+//fun main(args: Array<String>) {
+//    val items = listOf(1, 2, 3, 4, 5)
+//
+//    // Lambdas are code blocks enclosed in curly braces.
+//    items.fold(0) {
+//        // When a lambda has parameters, they go first, followed by '->'
+//        acc: Int, i: Int ->
+//        print("acc = $acc, i = $i, ")
+//        val result = acc + i
+//        println("result = $result")
+//        // The last expression in a lambda is considered the return value:
+//        result
+//    }
+//
+//    // When the last parameter of a function is a function type, we can
+//    // put the lambda expression outside of the parentheses.
+//
+//    // Parameter types in a lambda are optional if they can be inferred:
+//    val joinedToString: String = items.fold("Elements:") { acc, i -> "$acc $i" }
+//
+//    // Function references can also be used for higher-order function calls:
+//    val product = items.fold(1, Int::times)
+//
+//    println("joinedToString = $joinedToString")
+//    println("product = $product")
+//}
 
 /////////////////
 // Function types
@@ -87,6 +89,20 @@ fun main(args: Array<String>) {
 // taking two arguments of types A and B and returning a value of type C.
 
 // The parameter types list may be empty, as in () -> A.
+
+typealias StringProducer = () -> String
+
+val foo: StringProducer = { "hello" }
+val bar = foo().length
+
+
+// A.(B) -> C
+// (A, B) -> C
+val higherOrder: StringProducer.(Int) -> Int = { f -> 2 * f }
+
+//fun main(args: Array<String>) {
+//    println(10 == foo.higherOrder(5))
+//}
 
 // The Unit return type cannot be omitted.
 
@@ -111,6 +127,7 @@ inline fun shortcutAction(
         val shortcutManager =
                 context.getSystemService(ShortcutManager::class.java)
         shortcutManager.action()
+        action(shortcutManager)
     }
 }
 
@@ -134,7 +151,7 @@ fun demoFunctionWithReceiverType() {
 // (Int) -> ((Int) -> Unit)
 
 // The arrow notation is right-associative,
-// (Int) -> (Int) -> Unit is equivalent to the previous example,
+lateinit var baz: (Int) -> (Int) -> Unit //is equivalent to the previous example,
 // but not to ((Int) -> (Int)) -> Unit.
 
 // You can also give a function type an alternative name by using a type alias:
@@ -143,11 +160,36 @@ typealias ClickHandler = (Button, ClickEvent) -> Unit
 ////////////////////////////////
 // Instantiating a function type
 
+val lambdaExpression = { x: Int, y: Int -> x + y }
 // There are several ways to obtain an instance of a function type:
+val anonFunction = fun(x: Int, y: Int): Int = x + y
+
+val result = anonFunction(3, 4)
+val result2 = lambdaExpression(3, 4)
 
 // Using a code block within a function literal, in one of the forms:
 // - a lambda expression: { a, b -> a + b },
 // - an anonymous function: fun(s: String): Int { return s.toIntOrNull() ?: 0 }
+
+fun isOdd(n: Int): Boolean = n % 2 == 1
+
+fun demoMethodRef() {
+    val listOfInts = listOf(1, 2, 3).filter { x -> x % 2 == 1 }
+}
+
+fun badLambda(f: () -> Unit, n: Int) {}
+
+fun demoBadCall() {
+    badLambda({}, 5)
+}
+
+fun goodLambda(n: Int, f: () -> Unit) {}
+
+fun demoGoodCall() {
+    goodLambda(5, { print("") })
+
+    goodLambda(5) { print("") }
+}
 
 // Using a callable reference to an existing declaration:
 // - a top-level, local, member, or extension function: ::isOdd, String::toInt,
@@ -159,16 +201,34 @@ typealias ClickHandler = (Button, ClickEvent) -> Unit
 // as an interface:
 
 class IntTransformer : (Int) -> Int {
-    override operator fun invoke(x: Int): Int = TODO()
+    override operator fun invoke(x: Int): Int = 5
+
+    // Can still have other methods
+    fun doSomething() {
+
+    }
 }
 
-val intFunction: (Int) -> Int = IntTransformer()
+val intFunction = IntTransformer()
 
-val foo: Int = intFunction(3)
+val fooBar: Int = intFunction.invoke(3)
+
+class Baz {
+    fun foo() = "Native"
+}
+
+fun Baz.foo() = "Extension"
+
+//fun main(args: Array<String>) {
+//    val baz = Baz()
+//
+//    print(baz.foo())
+//}
 
 // The compiler can infer the function types for variables if there is
 // enough information:
 
+fun Int.plus(l: Long): Int = this + l.toInt()
 val a = { i: Int -> i + 1 } // The inferred type is (Int) -> Int
 
 ////////////////////////////////////
@@ -183,6 +243,9 @@ val a = { i: Int -> i + 1 } // The inferred type is (Int) -> Int
 // Another way to invoke a value of a function type with receiver is
 // to prepend it with the receiver object, as if the value were an
 // extension function: 1.foo(2)
+
+// A.(B) -> C
+// (A, B) -> C
 
 fun main1(args: Array<String>) {
     val stringPlus: (String, String) -> String = String::plus
@@ -204,8 +267,11 @@ fun main1(args: Array<String>) {
 
 // Otherwise, the value of the last expression is implicitly returned.
 
+fun notInline(f: () -> Unit) = f()
+
+
 // Therefore, the two following snippets are equivalent:
-fun returnDemo() {
+fun returnDemo(): () -> Unit {
     val ints = listOf(1, 2, 3)
 
     ints.filter {
@@ -213,10 +279,30 @@ fun returnDemo() {
         shouldFilter // last line interpreted as return value
     }
 
+//    notInline {
+//        return
+//    }
+
+    val mutableList = mutableListOf<Int>()
+    for (i in ints) {
+        val check = i > 0
+        return {}
+    }
+
+
+//    fun(x: Int): Int {
+//        return {}
+//    }
+
+
     ints.filter {
         val shouldFilter = it > 0
-        return@filter shouldFilter
+        return {}
     }
+//    }
+
+//    return fun() = Unit
+    return {}
 }
 
 //////////////////////////////////
@@ -267,11 +353,14 @@ fun typeOmissionDemo() {
 // i.e. the variables declared in the outer scope.
 
 // Unlike Java, the variables captured in the closure can be modified:
-fun closureDemo() {
-    val ints = listOf(1, 2, 3, 4)
+fun main(args: Array<String>) {
+    val ints = listOf(0)
     var sum = 0
-    ints.filter { it > 0 }.forEach {
-        sum += it
-    }
-    print(sum)
+    ints.filter { it > 0 }
+            .forEach { sum += it }
+    println("Before notinline Sum = $sum")
+
+    notInline { sum++ }
+
+    println("After notinline Sum = $sum")
 }

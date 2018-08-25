@@ -1,5 +1,7 @@
 package com.orobator.kotlin.intro.lesson18
 
+import com.orobator.kotlin.intro.lesson13.example.typed.id.Song
+
 // Operator Overloading
 
 // Kotlin allows us to provide alternate implementations for operators such as
@@ -47,3 +49,30 @@ fun oddListDemo() {
 }
 
 // Only you thing you can't overload is the identity check ===
+
+class Mario(val size: Int) {
+
+    operator fun inc(): Mario {
+        return Mario(size + 1)
+    }
+}
+
+fun demo() {
+    var mario = Mario(5)
+    mario++
+    println(mario.size)
+}
+
+class SongQueue {
+    private val list: List<Song> = listOf()
+
+    operator fun get(n: Int) : Song {
+        return list[n]
+    }
+}
+
+fun demo2() {
+    val queue = SongQueue()
+
+    val upNextSong = queue[1]
+}

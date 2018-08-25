@@ -55,8 +55,8 @@ val naiveAddAll = """
 
 val safeOperation = """
   // Java
-  void copyAll(Collection<Object> to, Collection<String> from) {
-    to.addAll(from);
+  void copyAll(Collection<Object> dest, Collection<String> src) {
+    dest.addAll(src);
     // !!! Would not compile with the naive declaration of addAll:
     // Collection<String> is not a subtype of Collection<Object>
   }

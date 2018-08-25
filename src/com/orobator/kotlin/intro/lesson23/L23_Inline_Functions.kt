@@ -203,6 +203,7 @@ inline var inlineAny: Any
 
 fun demoInlineProperties() {
     println(inlineFoo)
+    println(inlineFoo)
     println(regularFoo)
 
     val any = inlineAny
