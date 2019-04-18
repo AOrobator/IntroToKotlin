@@ -1,6 +1,6 @@
 package com.orobator.kotlin.intro.lesson04
 
-fun main(args: Array<String>) {
+fun main() {
     // Basic syntax needed to create a class.
     // Empty is a fully valid Kotlin class!
     class Empty

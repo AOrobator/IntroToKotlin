@@ -13,7 +13,7 @@ data class Car(val year: Int, val manufacturer: String, val wheels: Int) {
 }
 
 // Write code that copies one car, but with a different year and wheel count
-fun main(args: Array<String>) {
+fun main() {
     val tesla = Car(year = 2016, manufacturer = "Tesla", wheels = 4)
     val beater = tesla.copy(year = 2012, wheels = 3)
 

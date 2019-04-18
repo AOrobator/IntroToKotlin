@@ -3,8 +3,8 @@ package com.orobator.kotlin.intro.lesson17
 import kotlin.properties.Delegates
 import kotlin.reflect.KProperty
 
-// Delegation is an OOP design pattern that allows object composition to achieve
-// the same code reuse as inheritance.
+// Delegation is an OOP design pattern that allows object composition
+// to achieve the same code reuse as inheritance.
 
 class Rectangle(val width: Int, val height: Int) {
     fun area() = width * height
@@ -66,7 +66,7 @@ class Example {
     var p: String by Delegate()
 }
 
-//fun main(args: Array<String>) {
+//fun main() {
 //    val e = Example()
 //    println(e.p)
 //
@@ -127,7 +127,7 @@ val lazyValue: String by lazy {
     "Hello"
 }
 
-fun main2(args: Array<String>) {
+fun main() {
     println(lazyValue) // prints Computed!\nHello
     println(lazyValue) // prints Hello
 }
@@ -174,24 +174,24 @@ class Customer(val map: MutableMap<String, String?>) {
     val lastName: String? by StringMapDelegate(map)
 }
 
-fun main(args: Array<String>) {
-    val map = mutableMapOf<String, String?>(
-            "firstName" to "John",
-            "lastName" to "Adams"
-    )
-    val customer = Customer(map)
-
-    println(customer.firstName)
-
-    map["firstName"] = "Adam"
-
-    println(customer.firstName)
-
-    println(customer.lastName)
-    map["lastName"] = "Crews"
-    println(customer.lastName)
-//    customer.lastName = ""
-
-
-
-}
+//fun main() {
+//    val map = mutableMapOf<String, String?>(
+//            "firstName" to "John",
+//            "lastName" to "Adams"
+//    )
+//    val customer = Customer(map)
+//
+//    println(customer.firstName)
+//
+//    map["firstName"] = "Adam"
+//
+//    println(customer.firstName)
+//
+//    println(customer.lastName)
+//    map["lastName"] = "Crews"
+//    println(customer.lastName)
+////    customer.lastName = ""
+//
+//
+//
+//}

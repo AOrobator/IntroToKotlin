@@ -48,7 +48,7 @@ class Student3 {
 
 // Making var's with custom get() is wasteful.
 // Field and accessor method still get generated, but never used.
-fun main(args: Array<String>) {
+fun main() {
     val student = Student3()
 
     student.testGrade = 89 // Can access a property similarly to a field.

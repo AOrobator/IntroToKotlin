@@ -60,7 +60,7 @@ enum class Weather {
 }
 
 // Working with enums
-fun main(args: Array<String>) {
+fun main() {
     // Every Enum class has a synthetic method called values() which returns
     // an array of all the enum values
     val directions: Array<Direction> = Direction.values()

@@ -46,7 +46,7 @@ fun calendarDemo() {
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val foo = FooBar()
     val bar: Unit = foo.getBar()
 }

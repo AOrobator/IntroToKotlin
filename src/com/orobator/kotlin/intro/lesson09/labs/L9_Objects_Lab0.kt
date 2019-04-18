@@ -30,6 +30,6 @@ class TopLevel {
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     TopLevel().bar()
 }

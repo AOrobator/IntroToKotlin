@@ -29,7 +29,7 @@ fun copy(src: Array<Any>, dst: Array<Any>) {
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val ints: Array<Int> = arrayOf(1, 2, 3) // src
     val any = Array<Any>(3) { "" } // dst
     typeSafeCopy(ints, any) // Error: expects (Array<Any>, Array<Any>)

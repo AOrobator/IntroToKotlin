@@ -32,7 +32,7 @@ class Steak : Meat() {
     }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val nyStrip = Steak()
     for (i in 0..10) {
         println("Steak is ${nyStrip.doneness}")

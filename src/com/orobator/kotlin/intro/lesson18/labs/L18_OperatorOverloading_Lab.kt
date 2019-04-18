@@ -11,7 +11,7 @@ import com.orobator.kotlin.intro.lesson18.Point
 // The positive y axis points up, the positive x axis points right
 data class Box(val topLeft: Point, val bottomRight: Point)
 
-fun main(args: Array<String>) {
+fun main() {
 //    val result = Point(1,1) + Point(3,3)
 //    println("result should be Point(x=4, y=4); is actually $result")
 

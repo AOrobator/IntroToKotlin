@@ -13,7 +13,7 @@ object UpdateManager {
 }
 
 // Can access them by using the object name
-fun main(args: Array<String>) {
+fun main() {
     println(UpdateManager.version)
 
     UpdateManager.checkForUpdates()

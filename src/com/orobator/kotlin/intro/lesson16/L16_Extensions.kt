@@ -81,7 +81,7 @@ fun printFoo(c: C) {
     println(c.foo())
 }
 
-fun main(args: Array<String>) {
+fun main() {
     // Prints C, because only static type matters, not runtime type
     printFoo(D())
 }

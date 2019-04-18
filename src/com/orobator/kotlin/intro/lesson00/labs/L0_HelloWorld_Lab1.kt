@@ -1,6 +1,6 @@
 package com.orobator.kotlin.intro.lesson00.labs
 
-fun main(args: Array<String>) {
+fun main() {
     // Write a for loop from 0 to 15 that jumps by 3's using an Int range.
     // Print out the loop index on each iteration.
 

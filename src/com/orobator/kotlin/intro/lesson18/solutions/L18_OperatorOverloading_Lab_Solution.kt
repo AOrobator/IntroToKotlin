@@ -18,7 +18,7 @@ operator fun Box.contains(p: Point): Boolean {
     return inXRange and inYRange
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val result = Point(1, 1) + Point(3, 3)
     println("result should be Point(x=4, y=4); is actually $result")
 

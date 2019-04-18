@@ -100,7 +100,7 @@ fun betterPerformance() {
 
 // Inlining would prevent this object creation.
 
-fun main(args: Array<String>) {
+fun main() {
     terriblePerformance()
     betterPerformance()
 }

@@ -1,6 +1,6 @@
 package com.orobator.kotlin.intro.lesson01
 
-fun main(args: Array<String>) {
+fun main() {
 
     ///////////
     /* Lists */

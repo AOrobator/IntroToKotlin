@@ -1,6 +1,6 @@
 package com.orobator.kotlin.intro.lesson00.labs
 
-fun main(args: Array<String>) {
+fun main() {
     // Print out the 3rd character of "Kotlin"
 
 

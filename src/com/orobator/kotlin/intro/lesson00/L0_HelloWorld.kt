@@ -1,7 +1,7 @@
 package com.orobator.kotlin.intro.lesson00
 
 /**
- * @param args Command Line arguments
+ * @param args optional command line arguments
  */
 fun main(args: Array<String>) {
     val scope = "World"

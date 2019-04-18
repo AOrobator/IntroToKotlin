@@ -15,7 +15,7 @@ inline fun <reified T> getT() {
     print(T::class)
 }
 
-fun main(args: Array<String>) {
+fun main() {
     getT<Double>() // prints class kotlin.Double
 }
 

@@ -1,6 +1,6 @@
 package com.orobator.kotlin.intro.lesson00.solutions
 
-fun main(args: Array<String>) {
+fun main() {
     // Print out the 3rd character of "Kotlin"
     println("3rd character = ${"Kotlin"[2]}")
 

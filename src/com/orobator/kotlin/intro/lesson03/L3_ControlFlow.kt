@@ -2,7 +2,7 @@ package com.orobator.kotlin.intro.lesson03
 
 import java.lang.Integer.parseInt
 
-fun main(args: Array<String>) {
+fun main() {
     // If statements are expressions. They have a value
     // This means no ternary operator
     val foo = "Hello"
@@ -61,6 +61,11 @@ fun main(args: Array<String>) {
         x is String -> println("Case 2")
         animal == "Husky" -> println("woof")
     } // Don't need else because this isn't an expression
+
+    // It's possible to declare a variable inside a when statement
+    when (val len = animal.length) {
+       0 -> println("Length = $len")
+    }
 
 
     // For loops

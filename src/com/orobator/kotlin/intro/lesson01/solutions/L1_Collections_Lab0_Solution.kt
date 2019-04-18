@@ -1,6 +1,6 @@
 package com.orobator.kotlin.intro.lesson01.solutions
 
-fun main(args: Array<String>) {
+fun main() {
     // Declare an immutable list of the first positive 1000 natural numbers
     val numbers = List(size = 1000) { it + 1 }
 

@@ -16,7 +16,7 @@ data class Point(val x: Int, val y: Int)
 // Full List: https://kotlinlang.org/docs/reference/operator-overloading.html
 operator fun Point.unaryMinus() = Point(-x, -y)
 
-fun main(args: Array<String>) {
+fun main() {
     val point = Point(10, 20)
     println(-point)  // prints "(-10, -20)"
 }

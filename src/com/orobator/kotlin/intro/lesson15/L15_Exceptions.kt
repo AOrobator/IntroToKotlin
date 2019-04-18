@@ -4,7 +4,7 @@ import java.io.IOException
 import java.lang.IllegalStateException
 import java.lang.Integer.parseInt
 
-fun main(args: Array<String>) {
+fun main() {
     // Exceptions
 
     // All exception classes in Kotlin are descendants of the class Throwable.

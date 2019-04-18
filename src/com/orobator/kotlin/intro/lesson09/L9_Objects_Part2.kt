@@ -1,7 +1,7 @@
 package com.orobator.kotlin.intro.lesson09
 
 // Object Expressions
-fun main(args: Array<String>) {
+fun main() {
     val editText = EditText()
     var changeCount = 0
 

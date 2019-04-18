@@ -1,6 +1,6 @@
 package com.orobator.kotlin.intro.lesson00.labs
 
-fun main(args: Array<String>) {
+fun main() {
 //    Uncomment and fix the compile errors
 //    val name = "Kendrick"
 //    name ="Drake"

@@ -1,6 +1,6 @@
 package com.orobator.kotlin.intro.lesson01.labs
 
-fun main(args: Array<String>) {
+fun main() {
     // Declare an immutable list of the first positive 1000 natural numbers
 
     // Declare an immutable list that filters the previous list to the first 26 natural numbers

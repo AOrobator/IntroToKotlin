@@ -106,7 +106,7 @@ class Derived(
     override val size: Int = (super.size + lastName.length).also { println("Initializing size in Derived: $it") }
 }
 
-fun main(args: Array<String>) {
+fun main() {
     println("""Constructing Derived("hello", "world")""")
     val d = Derived("hello", "world")
 }

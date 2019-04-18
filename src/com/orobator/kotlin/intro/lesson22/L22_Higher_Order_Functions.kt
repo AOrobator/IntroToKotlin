@@ -48,7 +48,7 @@ inline fun sum(x: Int, y: Int) = x + y
 // argument, and lambda expressions are widely used for this purpose at
 // higher-order function call sites:
 
-//fun main(args: Array<String>) {
+//fun main() {
 //    val items = listOf(1, 2, 3, 4, 5)
 //
 //    // Lambdas are code blocks enclosed in curly braces.
@@ -100,7 +100,7 @@ val bar = foo().length
 // (A, B) -> C
 val higherOrder: StringProducer.(Int) -> Int = { f -> 2 * f }
 
-//fun main(args: Array<String>) {
+//fun main() {
 //    println(10 == foo.higherOrder(5))
 //}
 
@@ -219,7 +219,7 @@ class Baz {
 
 fun Baz.foo() = "Extension"
 
-//fun main(args: Array<String>) {
+//fun main() {
 //    val baz = Baz()
 //
 //    print(baz.foo())
@@ -353,7 +353,7 @@ fun typeOmissionDemo() {
 // i.e. the variables declared in the outer scope.
 
 // Unlike Java, the variables captured in the closure can be modified:
-fun main(args: Array<String>) {
+fun main() {
     val ints = listOf(0)
     var sum = 0
     ints.filter { it > 0 }

@@ -23,7 +23,7 @@ data class Creature(val numLegs: Int) {
     var numEyes: Int = 2
 }
 
-fun main(args: Array<String>) {
+fun main() {
     val thing1 = Creature(numLegs = 2)
     val thing2 = Creature(numLegs = 2).also { it.numEyes = 7 }
 
