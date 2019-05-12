@@ -31,3 +31,23 @@ fun callbackHell() {
         }
     }
 }
+
+// Many developers tried reactive programming via RxJava
+fun theRxWay() {
+    val disposable = getToken("fake-client-id")
+            .flatMap { getUser(it, "fake-user-id") }
+            .flatMap { deserializeUser(it) }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                    onSuccess = { showUserData(it) },
+                    onError = { handleError(it) })
+
+    // Sometime later
+    disposable.dispose()
+}
+
+
+// But many found RxJava to have a steep learning curve with its many operators
+// and their return types. Common operations have the ability to become very
+// complex.
