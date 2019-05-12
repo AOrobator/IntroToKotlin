@@ -51,3 +51,7 @@ fun theRxWay() {
 // But many found RxJava to have a steep learning curve with its many operators
 // and their return types. Common operations have the ability to become very
 // complex.
+
+//fun theCoroutineWay() = runBlocking {
+//
+//}

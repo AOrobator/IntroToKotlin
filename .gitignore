@@ -3,4 +3,7 @@ out/
 *.iml
 build/
 .DS_Store
+.gradle
+lessons/out
+
 
