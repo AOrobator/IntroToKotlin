@@ -14,10 +14,3 @@ suspend fun getDataFromNetwork(id: String): String {
 // Basically a callback
 // Success: Continuation<T>.resume(value: T)
 // Error: Continuation<T>.resumeWithException(exception: Throwable)
-
-
-// Show adapting callback manually with continuations
-// Continuation is backbone of coroutine
-// Coroutine builders are doorways into coroutine land
-// break down launch, runBlocking
-// Structured concurrency, scope, Job
