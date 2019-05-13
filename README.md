@@ -20,49 +20,54 @@ Clone the repo into your desired location like so:
 git clone https://github.com/AOrobator/IntroToKotlin.git
 ```
 
-Next, open the IntroToKotlin folder in IntelliJ.
+Next, import the IntroToKotlin project into IntelliJ. When prompted, choose 
+create project from existing sources.
 
-Once you have the project imported, you'll have to do some project configuration. 
+![Import project][import_project]
 
-First, open the Project Structure view.
+Next, make sure that the project location is properly specified and the project 
+format is .idea.
 
-![Opening project structure][opening_project_structure]
+![Import project location][import_project_location] 
 
-Under the Project section, make sure to set your project SDK to Java 1.8 and set
-your project language level to 8. Then set your Project compiler output to 
-IntroToKotlin/build
+Click next several times until you're at a screen that looks like this:
 
-![Project settings][project_settings]
+![Project SDK][project_sdk]
 
-Under the Modules section, select the `src` folder and mark it as a Sources 
-directory.
+Make sure to select Java 1.8 as the Project SDK, then hit next until you finish.
 
-![Mark as source directory][mark_as_source]
+Once you have the project imported, you may be prompted to import the project as
+a Gradle project.
 
-Under the Libraries section, click the plus button in the top left and select 
-Java from the New Project Library dialog. Then select 
-lib/annotations-17.0.0.jar.
+![Import gradle project][import_gradle_project]
 
-![Project structure libraries][project_structure_libs]
+After clicking the prompt, select "Create separate module per source set" and 
+"Use default Gradle wrapper", then hit OK.
 
-Click OK and close the Project Structure dialog. In the code editor, you may be 
-prompted to configure Kotlin.
+![Import module from gradle][import_module_from_gradle]
 
-![Configure Kotlin][configure_kotlin]
+Finally, right click on lessons/src/main and mark the directory as a Sources 
+Root.
 
-Choose Java and restart IntelliJ. You should now be able to run L0_HelloWorld.kt
+![mark_as_sources_root][mark_as_sources_root]
+
+You should now be able to run L0_HelloWorld.kt
 via a green play button in the gutter.
 
 ![Run code][run_code]
+
+If you see a configure Kotlin popup window, feel free to dismiss it, as Kotlin 
+should already be configured.
 
 [Git]: https://git-scm.com/downloads
 [kotlin_banner]: img/kotlin_banner.png "Kotlin Logo"
 [Kotlin]: https://kotlinlang.org/
 [Java 1.8]: https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
 [IntelliJ]: https://www.jetbrains.com/idea/download/
-[opening_project_structure]: img/opening_project_structure.png "Opening Project Structure"
-[project_settings]: img/project_structure_project.png "Project Settings"
-[mark_as_source]: img/mark_as_source.png "Mark as source"
-[project_structure_libs]: img/project_structure_libraries.png "Libraries"
-[configure_kotlin]: img/configure_kotlin.png "Configure Kotlin"
+[import_project]: img/import_project.png "Import Project"
+[import_project_location]: img/import_project2.png "Import Project, Location"
+[project_sdk]: img/project_sdk.png "Project SDK"
+[import_gradle_project]: img/import_gradle_project.png "Import Gradle project"
+[import_module_from_gradle]: img/import_module_from_gradle.png "Import module from gradle"
+[mark_as_sources_root]: img/mark_directory_as_sources_root.png "Mark as sources"
 [run_code]: img/run_code.png "Run Code"
