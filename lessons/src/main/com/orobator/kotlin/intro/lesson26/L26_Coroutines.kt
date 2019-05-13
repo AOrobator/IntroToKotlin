@@ -1,6 +1,9 @@
 package com.orobator.kotlin.intro.lesson26
 
 import com.orobator.kotlin.intro.lesson11.User
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 ////////////////
 /* Coroutines */
@@ -52,6 +55,34 @@ fun theRxWay() {
 // and their return types. Common operations have the ability to become very
 // complex.
 
-//fun theCoroutineWay() = runBlocking {
-//
-//}
+// Kotlin aims to simplify this by abstracting away the callback pattern.
+fun theCoroutineWay() {
+    GlobalScope.launch {
+        val token = retrieveToken("fake-client-id")
+        val userString = retrieveUser(token, "fake-user-id")
+        val user = parseUser(userString)
+        displayUserData(user)
+    }
+}
+
+// Special suspend modifier means that this function doesn't block. It suspends
+// the execution so the calling thread is free to do other work. This means we
+// can call long running suspend functions on the main thread without fear,
+// because the main thread won't be blocked.
+suspend fun retrieveToken(clientId: String): String {
+    delay(250)
+    return "token"
+}
+
+// Coroutines can replace RxJava Single, Maybe, and Completable.
+suspend fun retrieveUser(token: String, userId: String): String {
+    delay(250)
+    return "Howard"
+}
+
+suspend fun parseUser(userString: String): User {
+    delay(250)
+    return User(name = userString)
+}
+
+fun displayUserData(user: User) = Unit
