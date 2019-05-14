@@ -4,6 +4,12 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+// Normal functions can't call suspend functions
+
+// We get into the land of coroutines and suspending functions using
+// coroutine builders.
+
+// Launch - One of the most prominent coroutine builders. Fire & forget.
 fun main() {
     GlobalScope.launch { // launch a new coroutine in background and continue
         delay(1000L) // non-blocking delay for 1 second (default time unit is ms)
@@ -15,6 +21,5 @@ fun main() {
 
 // Lab 0
 
-// Coroutine builders are doorways into coroutine land
 // break down launch, runBlocking, async?
 // Structured concurrency, scope, Job
