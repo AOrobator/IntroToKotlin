@@ -70,7 +70,7 @@ Day 3 Class Runtime: 9:30am - 4:30pm
 12:10 - Lesson 16: Lab 0
 12:20 - Attendance
 12:25 - Lunch
-13:25 - Lesson 17: Delegates
+13:25 - Lesson 17: Delegates // Starbucks ended here on Day 2
 13:35 - Lesson 17: Lab
 13:40 - Lesson 18: Operator Overloading // 16:00 actual
 13:55 - Lesson 18: Lab // Ended Here
@@ -97,6 +97,6 @@ Day 4 Class Runtime: 9:30am - 4:30pm
 12:15 - Attendance
 12:20 - Lunch
 13:20 - Lesson 23: Inline functions
-13:35 - Lesson 24: Reified types
+13:35 - Lesson 24: Reified types // Starbucks ended Day 3 Here
 13:45 - Lesson 25: Kotlin/Java Inter-op
 16:00 - End of class survey

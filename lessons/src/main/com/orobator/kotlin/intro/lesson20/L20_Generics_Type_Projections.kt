@@ -44,7 +44,7 @@ fun main() {
 
 // We can prohibit copy from writing to src by using type projection:
 
-fun typeSafeCopy(src: Array<out Any>, dst: Array<Any>) {
+fun typeSafeCopy(src: Array<out Any>, dst: Array<in Any>) {
     assert(src.size == dst.size)
     for (i in src.indices) {
         dst[i] = src[i]

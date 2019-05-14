@@ -39,6 +39,32 @@ fun main0(args: Array<String>) {
     Derived(b).print()
 }
 
+interface Repo1 {
+    fun getCoffee(): String
+}
+
+interface Repo2 {
+    fun getUser(): String
+}
+
+class Repo1Impl : Repo1 {
+    override fun getCoffee(): String {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+
+class Repo2Imple : Repo2 {
+    override fun getUser(): String {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+}
+
+class NetworkClient(
+        val repo1Impl: Repo1Impl,
+        val repo2Imple: Repo2Imple
+) : Repo1 by repo1Impl,
+        Repo2 by repo2Imple
+
 // Delegated Properties
 // There are certain common kinds of properties, that we could implement them
 // manually every time we need them, or we could implement them once and for
