@@ -1,9 +1,7 @@
 package com.orobator.kotlin.intro.lesson26
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
+import kotlin.system.measureTimeMillis
 
 // Normal functions can't call suspend functions
 
@@ -11,7 +9,7 @@ import kotlinx.coroutines.runBlocking
 // coroutine builders.
 
 // Launch - One of the most prominent coroutine builders. Fire & forget.
-fun main2() {
+fun main0() {
     GlobalScope.launch { // launch a new coroutine in background and continue
         delay(1000L) // non-blocking delay for 1 second (default time unit is ms)
         println("World!") // print after delay
@@ -30,7 +28,7 @@ fun main2() {
 // It is designed to bridge regular blocking code to libraries that
 // are written in suspending style, to be used in main functions and
 // in tests.
-fun main() = runBlocking { // start main coroutine
+fun main1() = runBlocking { // start main coroutine
     GlobalScope.launch { // launch a new coroutine in background and continue
         delay(1000L)
         println("World!")
@@ -39,5 +37,33 @@ fun main() = runBlocking { // start main coroutine
     delay(2000L)  // delaying for 2 seconds to keep JVM alive
 }
 
+
+// The async coroutine builder is used when we want to explicitly be
+// concurrent.
+//
+// async returns a Deferred – a light-weight non-blocking future that
+// represents a promise to provide a result later.
+fun main2() = runBlocking {
+    val time = measureTimeMillis {
+        val one: Deferred<Int> = async { doSomethingUsefulOne() }
+        // one.cancel() // Deferred also implements Job, a handle to
+        // ongoing coroutine, so you can cancel.
+
+        val two: Deferred<Int> = async { doSomethingUsefulTwo() }
+        println("The answer is ${one.await() + two.await()}")
+
+    }
+    println("Completed in $time ms")
+}
+
+suspend fun doSomethingUsefulOne(): Int {
+    delay(1000L) // pretend we are doing something useful here
+    return 13
+}
+
+suspend fun doSomethingUsefulTwo(): Int {
+    delay(1000L) // pretend we are doing something useful here, too
+    return 29
+}
 // break down launch, runBlocking, async?
 // Structured concurrency, scope, Job
