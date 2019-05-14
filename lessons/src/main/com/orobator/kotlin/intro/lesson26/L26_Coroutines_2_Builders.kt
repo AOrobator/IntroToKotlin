@@ -65,5 +65,16 @@ suspend fun doSomethingUsefulTwo(): Int {
     delay(1000L) // pretend we are doing something useful here, too
     return 29
 }
-// break down launch, runBlocking, async?
-// Structured concurrency, scope, Job
+
+//////////////////////////
+// Structured concurrency
+
+// Cancelling the parent cancels the children -> throws
+// CancellationException to kids
+
+// If a child fails with an exception other than
+// CancellationException, this cancels the parent
+
+// Parent Scope waits for children to complete
+
+// Structured concurrency makes it harder to leak coroutines
