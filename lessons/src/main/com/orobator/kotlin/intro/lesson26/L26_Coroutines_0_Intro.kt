@@ -4,6 +4,7 @@ import com.orobator.kotlin.intro.lesson11.User
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 ////////////////
 /* Coroutines */
@@ -86,3 +87,16 @@ suspend fun parseUser(userString: String): User {
 }
 
 fun displayUserData(user: User) = Unit
+
+// Coroutines are light-weight!
+fun main() = runBlocking {
+    repeat(1_000_000) {
+        // launch a lot of coroutines
+        launch {
+            delay(1000L)
+            print(".")
+        }
+    }
+}
+
+// This takes a lot longer with threads...
