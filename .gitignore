@@ -5,5 +5,5 @@ build/
 .DS_Store
 .gradle
 lessons/out
-
+local.properties
 
