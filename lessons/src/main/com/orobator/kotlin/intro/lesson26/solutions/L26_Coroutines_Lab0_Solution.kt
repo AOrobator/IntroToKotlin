@@ -16,7 +16,8 @@ fun log(msg: String): Unit = println("Thread: ${Thread.currentThread().name}, Ms
 
 fun main() {
     log("Starting off")
-    GlobalScope.launch { // launch a new coroutine in background and continue
+    GlobalScope.launch {
+        // launch a new coroutine in background and continue
         log("In launch")
         delay(1000L) // non-blocking delay for 1 second (default time unit is ms)
         println("World!") // print after delay
@@ -26,3 +27,12 @@ fun main() {
     log("About to sleep")
     Thread.sleep(2000L) // block main thread for 2 seconds to keep JVM alive
 }
+
+//  Thread: main, Msg: Starting off
+//  Hello,
+//  Thread: main, Msg: About to sleep
+//  Thread: DefaultDispatcher-worker-1, Msg: In launch
+//  World!
+//  Thread: DefaultDispatcher-worker-1, Msg: In launch, after delay
+//
+//  Process finished with exit code 0

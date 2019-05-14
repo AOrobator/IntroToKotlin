@@ -16,5 +16,5 @@ fun main() {
 // Lab 0
 
 // Coroutine builders are doorways into coroutine land
-// break down launch, runBlocking
+// break down launch, runBlocking, async?
 // Structured concurrency, scope, Job
