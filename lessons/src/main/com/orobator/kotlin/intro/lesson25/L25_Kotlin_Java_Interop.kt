@@ -1,5 +1,6 @@
 package com.orobator.kotlin.intro.lesson25
 
+import com.orobator.kotlin.intro.lesson05.Foo
 import java.util.Calendar
 import java.util.concurrent.ThreadPoolExecutor
 import java.util.concurrent.TimeUnit
@@ -92,12 +93,15 @@ fun mockitoDemo() {
 // for them are the same as in Java.
 
 fun platformTypeDemo() {
-    val foo: String = FooBar().makeString()
+    val platformType: String? = FooBar().returnPlatformType()
+
+    val foo: String? = FooBar().makeString()
+
 
     val list = ArrayList<String>() // non-null (constructor result)
     list.add("Item")
     val size = list.size // non-null (primitive int)
-    val item = list[0] // platform type inferred (ordinary Java object)
+    val item: String = list[0] // platform type inferred (ordinary Java object)
 
     // Kotlin does not issue nullability errors at compile time,
     // but the call may fail at runtime, because of a null-pointer
@@ -177,7 +181,8 @@ fun samDemo() {
 }
 
 class KotlinClass {
-    var foo: String = ""
+    @JvmName("jvmFoo")
+    fun foo(): String = ""
 }
 
 // Note that SAM conversions only work for interfaces,

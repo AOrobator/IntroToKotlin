@@ -10,7 +10,8 @@ import kotlin.system.measureTimeMillis
 
 // Launch - One of the most prominent coroutine builders. Fire & forget.
 fun main0() {
-    GlobalScope.launch { // launch a new coroutine in background and continue
+    GlobalScope.launch {
+        // launch a new coroutine in background and continue
         delay(1000L) // non-blocking delay for 1 second (default time unit is ms)
         println("World!") // print after delay
     }
@@ -28,8 +29,10 @@ fun main0() {
 // It is designed to bridge regular blocking code to libraries that
 // are written in suspending style, to be used in main functions and
 // in tests.
-fun main1() = runBlocking { // start main coroutine
-    GlobalScope.launch { // launch a new coroutine in background and continue
+fun main1() = runBlocking {
+    // start main coroutine
+    GlobalScope.launch {
+        // launch a new coroutine in background and continue
         delay(1000L)
         println("World!")
     }
@@ -43,10 +46,14 @@ fun main1() = runBlocking { // start main coroutine
 //
 // async returns a Deferred – a light-weight non-blocking future that
 // represents a promise to provide a result later.
-fun main2() = runBlocking {
+fun main() = runBlocking<Unit> {
     val time = measureTimeMillis {
-        val one: Deferred<Int> = async { doSomethingUsefulOne() }
-        // one.cancel() // Deferred also implements Job, a handle to
+        val one: Deferred<Int> = async {
+            withTimeout(500L) {
+                doSomethingUsefulOne()
+            }
+        }
+//         one.cancel() // Deferred also implements Job, a handle to
         // ongoing coroutine, so you can cancel.
 
         val two: Deferred<Int> = async { doSomethingUsefulTwo() }

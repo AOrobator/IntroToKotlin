@@ -15,9 +15,13 @@ public class FooBar {
         return null;
     }
 
+    public String returnPlatformType() {
+        return "";
+    }
+
     public void doSomething() {
         KotlinClass kc = new KotlinClass();
-        kc.getFoo();
-        kc.setFoo(null);
+//        kc.getFoo();
+//        kc.setFoo(null);
     }
 }
