@@ -35,7 +35,7 @@ class Student3 {
 
     var finalGrade: Char = 'A'
         get() {
-            val weightedGrade = testGrade * .8 + hwGrade * .2
+            val weightedGrade = (testGrade * .8 + hwGrade * .2).toInt()
             return when (weightedGrade) {
                 in 90..100 -> 'A'
                 in 80..89 -> 'B'
@@ -68,7 +68,7 @@ class Student4 {
 
     val finalGrade: Char // No backing field generated
         get() {
-            val weightedGrade = testGrade * .8 + hwGrade * .2
+            val weightedGrade = (testGrade * .8 + hwGrade * .2).toInt()
             return when (weightedGrade) {
                 in 90..100 -> 'A'
                 in 80..89 -> 'B'
@@ -97,9 +97,11 @@ class Student5 {
     var testGrade = 93
     var hwGrade = 87
 
+
     // Because this val is assigned without a getter,
     // it will be computed at construction time and won't change.
-    val finalGrade: Char = when (testGrade * .8 + hwGrade * .2) {
+    val finalGradeNumber = (testGrade * .8 + hwGrade * .2).toInt()
+    val finalGrade: Char = when (finalGradeNumber) {
         in 90..100 -> 'A'
         in 80..89 -> 'B'
         in 70..79 -> 'C'

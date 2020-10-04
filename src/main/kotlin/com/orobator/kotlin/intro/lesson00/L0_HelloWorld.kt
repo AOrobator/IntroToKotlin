@@ -31,7 +31,7 @@ fun main(args: Array<String>) {
     //////////////////////////////
 
     var nullableFruit: String? = "Pomegranate"
-    nullableFruit = null
+//    nullableFruit = null
 
     var nonNullFruit: String = "Grape"
     nonNullFruit = "Apple" // Okay because it isn't null
