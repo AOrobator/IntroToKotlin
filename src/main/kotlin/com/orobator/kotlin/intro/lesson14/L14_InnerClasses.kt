@@ -19,4 +19,8 @@ class WishlistAdapter {
             println(this@WishlistAdapter.listItems.size)
         }
     }
+
+    // Not recommended for use: Implicit dependencies can make leaks harder to
+    // track down if the inner class has a longer lifecycle than the outer
+    // class. Instead, pass in dependencies explicitly.
 }

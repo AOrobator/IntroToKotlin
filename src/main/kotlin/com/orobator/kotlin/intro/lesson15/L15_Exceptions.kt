@@ -3,6 +3,7 @@ package com.orobator.kotlin.intro.lesson15
 import java.io.IOException
 import java.lang.IllegalStateException
 import java.lang.Integer.parseInt
+import java.net.URL
 
 fun main() {
     // Exceptions
@@ -32,6 +33,17 @@ fun main() {
     }
 
     // Finally blocks don't affect the result of the expression
+
+    // Java's try with resources -> Auto close
+//    static String readFirstLineFromFile(String path) throws IOException {
+//        try (BufferedReader br =
+//                new BufferedReader(new FileReader(path))) {
+//            return br.readLine();
+//        }
+//    }
+
+    // Kotlin has the "use" extension function
+    fun URL.readBytes(): ByteArray = openStream().use { it.readBytes() }
 
     // Kotlin lacks checked exceptions
     // In Java you're forced to declare whether you throw an exception, but

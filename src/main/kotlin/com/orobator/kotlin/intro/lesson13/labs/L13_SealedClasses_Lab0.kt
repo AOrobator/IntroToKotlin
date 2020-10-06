@@ -12,16 +12,16 @@ package com.orobator.kotlin.intro.lesson13.labs
 // this caused a compile error. Fix it.
 
 fun main() {
-    // Test Code
-//    val one = Expression.Num(value = 1)
-//    val sum = Expression.Sum(left = one, right = one)
+// Test Code
+//    val one = Num(value = 1)
+//    val sum = Sum(left = one, right = one)
 //    println("Eval of $sum is ${eval(sum)}, should be 2")
 //
-//    val two = Expression.Num(2)
-//    val three = Expression.Num(3)
-//    val multiplication = Expression.Multiply(left = two, right = three)
+//    val two = Num(2)
+//    val three = Num(3)
+//    val multiplication = Multiply(left = two, right = three)
 //    println("Eval of $multiplication is ${eval(multiplication)}, should be 6")
 //
-//    val compoundExpression = Expression.Multiply(Expression.Sum(one, two), three)
+//    val compoundExpression = Multiply(Expression.Sum(one, two), three)
 //    println("Eval of compoundExpression i ${eval(compoundExpression)}, should be 9")
 }
