@@ -76,3 +76,26 @@ fun demo2() {
 
     val upNextSong = queue[1]
 }
+
+// Real world Android Example
+// val prefs: SharedPreferences = ...
+// val myData = prefs[MY_KEY]
+// prefs[MY_KEY] = 2
+/*
+* inline operator fun <reified T> SharedPreferences.get(key: String): T? {
+        return when (T::class) {
+            String::class -> getString(key, null) as T?
+            Int::class -> getInt(key, 0) as T?
+            Boolean::class -> getBoolean(key, false) as T?
+            else -> null
+        }
+    }
+
+    inline operator fun <reified T> SharedPreferences.set(key: String, value: T?) {
+        when (T::class) {
+            String::class -> edit { putString(key, value as String?) }
+            Int::class -> edit { putInt(key, (value as Int?) ?: 0) }
+            Boolean::class -> edit { putBoolean(key, (value as Boolean?) ?: false) }
+        }
+    }
+*/
