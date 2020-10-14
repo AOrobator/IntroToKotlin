@@ -27,4 +27,9 @@ package com.orobator.kotlin.intro.lesson21.labs
 //    println(letters == setOf('a', 'r'))
 //    println(other == setOf('%', '}'))
 //}
+//
+//fun main() {
+//    partitionWordsAndLines()
+//    partitionLettersAndOtherSymbols()
+//}
 
