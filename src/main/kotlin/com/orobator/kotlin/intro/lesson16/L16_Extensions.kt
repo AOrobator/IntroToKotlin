@@ -1,6 +1,5 @@
 package com.orobator.kotlin.intro.lesson16
 
-import com.orobator.kotlin.intro.lesson12.solutions.Steak
 import java.io.FileWriter
 
 // Extensions
@@ -166,6 +165,10 @@ class A {
 // Can call functions and interact with T without repeated references to T
 
 // Then it returns T
+
+class Steak {
+    fun cook() = Unit
+}
 
 // without apply()
 fun cookRareSteak0(): Steak {

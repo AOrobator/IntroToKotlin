@@ -1,7 +1,6 @@
 package com.orobator.kotlin.intro.lesson18.labs
 
 import com.orobator.kotlin.intro.lesson18.Point
-import com.orobator.kotlin.intro.lesson18.solutions.Box
 
 // Write an operator overload for + so that you can add two Points. You can
 // add two Points by adding the X's and the Y's together respectively.

@@ -1,7 +1,6 @@
 package com.orobator.kotlin.intro.lesson23
 
 import com.orobator.kotlin.intro.lesson05.Foo
-import com.orobator.kotlin.intro.lesson22.solutions.profile
 
 // Inline functions
 
@@ -18,6 +17,13 @@ import com.orobator.kotlin.intro.lesson22.solutions.profile
 // The functions shown below are good examples of this situation.
 // I.e., the profile() function could be easily inlined at call-sites.
 // Consider the following case:
+
+fun profile(block: () -> Unit): Long {
+    val start = System.currentTimeMillis()
+    block()
+    val end = System.currentTimeMillis()
+    return end - start
+}
 
 fun profileDemo() {
     val elapsedTime = profile {
