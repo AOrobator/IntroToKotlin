@@ -40,13 +40,13 @@ fun callbackHell() {
 // Many developers tried reactive programming via RxJava
 fun theRxWay() {
     val disposable = getToken("fake-client-id")
-            .flatMap { getUser(it, "fake-user-id") }
-            .flatMap { deserializeUser(it) }
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(
-                    onSuccess = { showUserData(it) },
-                    onError = { handleError(it) })
+        .flatMap { getUser(it, "fake-user-id") }
+        .flatMap { deserializeUser(it) }
+        .subscribeOn(Schedulers.io())
+        .observeOn(AndroidSchedulers.mainThread())
+        .subscribe(
+            onSuccess = { showUserData(it) },
+            onError = { handleError(it) })
 
     // Sometime later
     disposable.dispose()
@@ -101,3 +101,26 @@ fun main() = runBlocking {
 }
 
 // This takes a lot longer with threads...
+fun main2() {
+    printAMillionDotsWithThreads()
+}
+
+fun printAMillionDotsWithThreads() {
+    repeat(1_000_000) {
+        Thread {
+            Thread.sleep(1000L)
+            print(".")
+        }.start()
+    }
+}
+
+// How are coroutines and threads related?
+
+// The coroutine to thread relationship is pretty similar to the thread to
+// process relationship. Just like a process can have many threads, a thread
+// can have many coroutines. Just like threads in a process, coroutines in a
+// thread can be run in parallel or one at a time, depending on how your program
+// is written. Coroutines are generally run in shared thread pools. When your
+// code is running, a coroutine is able to suspend its execution without
+// blocking the thread it's running on. This frees up the parent thread to start
+// or resume execution of another coroutine.

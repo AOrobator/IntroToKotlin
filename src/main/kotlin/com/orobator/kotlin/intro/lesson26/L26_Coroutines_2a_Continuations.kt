@@ -14,3 +14,7 @@ suspend fun getDataFromNetwork(id: String): String {
 // Basically a callback
 // Success: Continuation<T>.resume(value: T)
 // Error: Continuation<T>.resumeWithException(exception: Throwable)
+
+// Continuations are responsible for storing information about the callstack
+// such as knowing where to resume execution after being paused. This allows
+// coroutines to be suspended without blocking the parent thread.
