@@ -12,6 +12,12 @@ import kotlinx.coroutines.*
 // body of the lambda passed in is a coroutine that can call suspending
 // functions.
 
+// Q: What's the difference between launch and runBlocking?
+
+// Both are coroutine builders, but the differences lie in the return behavior.
+// A call to launch will return immediately without waiting for any of its
+// children to finish. runBlocking on the other hand, will wait until all child
+// coroutines have completed before returning.
 
 // Q: Given the AccountsApi, print out the checkings and savings balances on one
 // line with the format:
@@ -60,5 +66,3 @@ fun displayBalancesConcurrently() = runBlocking {
 
     println("Checkings Balance = ${checkings.await()}, Savings balance = ${savings.await()}")
 }
-
-// Launch example - maybe firing off an analytics event?
