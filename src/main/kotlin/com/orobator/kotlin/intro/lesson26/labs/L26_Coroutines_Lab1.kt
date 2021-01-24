@@ -1,4 +1,4 @@
-package com.orobator.kotlin.intro.lesson26.solutions
+package com.orobator.kotlin.intro.lesson26.labs
 
 import kotlinx.coroutines.*
 
@@ -6,18 +6,9 @@ import kotlinx.coroutines.*
 
 // Q: What are coroutine builders used for? (Don't say building coroutines lol)
 
-// A suspending function can only be called from another suspending function or
-// a coroutine. In order to bridge the gap between non-suspending functions and
-// suspending functions, we can use a coroutine builder such as launch where the
-// body of the lambda passed in is a coroutine that can call suspending
-// functions.
 
 // Q: What's the difference between launch and runBlocking?
 
-// Both are coroutine builders, but the differences lie in the return behavior.
-// A call to launch will return immediately without waiting for any of its
-// children to finish. runBlocking on the other hand, will wait until all child
-// coroutines have completed before returning.
 
 // Q: Given the AccountsApi, print out the checkings and savings balances on one
 // line with the format:
@@ -57,16 +48,6 @@ fun main() {
     // Checkings Balance = $420, Savings balance = $720
 }
 
-fun displayBalancesSerially() = runBlocking {
-    val checkings = AccountsApi.getCheckingsBalance()
-    val savings = AccountsApi.getSavingsBalance()
+fun displayBalancesSerially() = Unit
 
-    println("Checkings Balance = $checkings, Savings balance = $savings")
-}
-
-fun displayBalancesConcurrently() = runBlocking {
-    val checkings = async { AccountsApi.getCheckingsBalance() }
-    val savings = async { AccountsApi.getSavingsBalance() }
-
-    println("Checkings Balance = ${checkings.await()}, Savings balance = ${savings.await()}")
-}
+fun displayBalancesConcurrently() = Unit
