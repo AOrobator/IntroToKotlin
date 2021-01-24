@@ -20,7 +20,7 @@ suspend fun Call.await(): ResponseBody = suspendCoroutine { continuation ->
             if (response.isSuccessful) {
                 // In our callback, we can resume the continuation if the
                 // network call was successful.
-                continuation.resume(response.body()!!)
+                continuation.resume(response.body!!)
             } else {
                 // Otherwise, we resume with the exception we ran into.
                 continuation.resumeWithException(ErrorResponse(response))
