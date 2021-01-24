@@ -10,7 +10,7 @@ import kotlinx.coroutines.*
 // Thread: <thread_name>, Msg: <msg>
 //
 // Then run main. Observe what thread each block runs in.
-fun log(msg: String): Unit = println("Thread: ${Thread.currentThread().name}, Msg: $msg")
+fun log(msg: String) = Unit
 
 fun main() = runBlocking {
     log("Starting off")
