@@ -1,6 +1,10 @@
 package com.orobator.kotlin.intro.lesson26.solutions
 
+import kotlinx.coroutines.runBlocking
 import java.io.IOException
+import kotlin.coroutines.resume
+import kotlin.coroutines.resumeWithException
+import kotlin.coroutines.suspendCoroutine
 
 // Given an API with callbacks convert it to use coroutines
 interface ReadTextFileCallback {
@@ -25,6 +29,27 @@ fun main() {
 
         override fun onError(exception: Exception) {
             println("Got error $exception")
+        }
+    })
+
+    runBlocking {
+        val text: String = try {
+            coReadFile("coroutine-test-path")
+        } catch (exception: Exception) {
+            "Got error $exception"
+        }
+        println("Coroutine received $text")
+    }
+}
+
+suspend fun coReadFile(path: String): String = suspendCoroutine { continuation ->
+    readFile(path, object : ReadTextFileCallback {
+        override fun onSuccess(text: String) {
+            continuation.resume(text)
+        }
+
+        override fun onError(exception: Exception) {
+            continuation.resumeWithException(exception)
         }
     })
 }
