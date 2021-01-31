@@ -1,5 +1,7 @@
 package com.orobator.kotlin.intro.lesson26.labs
 
+import com.orobator.kotlin.intro.lesson26.solutions.coReadFile
+import com.orobator.kotlin.intro.lesson26.solutions.readFile
 import kotlinx.coroutines.runBlocking
 import java.io.IOException
 import kotlin.coroutines.resume
@@ -9,8 +11,8 @@ import kotlin.coroutines.suspendCoroutine
 /**
  * Given the [readFile] function and the [ReadTextFileCallback] interface,
  * implement the function [coReadFile] that suspends instead of using a
- * callback. Run your suspending function in a [runBlocking] coroutine scope in
- * the main function. Make sure to print out the output from coReadFile and
+ * callback. Run your suspending function in a [runBlocking] coroutine builder
+ * in the main function. Make sure to print out the output from coReadFile and
  * account for the possible exception.
  */
 interface ReadTextFileCallback {
