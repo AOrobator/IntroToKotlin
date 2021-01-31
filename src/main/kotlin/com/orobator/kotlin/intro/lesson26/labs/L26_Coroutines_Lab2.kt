@@ -1,7 +1,5 @@
-package com.orobator.kotlin.intro.lesson26.solutions
+package com.orobator.kotlin.intro.lesson26.labs
 
-import com.orobator.kotlin.intro.lesson26.labs.coReadFile
-import com.orobator.kotlin.intro.lesson26.labs.readFile
 import kotlinx.coroutines.runBlocking
 import java.io.IOException
 import kotlin.coroutines.resume
@@ -45,24 +43,7 @@ fun main() {
     })
 
     // Code Here 👇
-    runBlocking {
-        val text: String = try {
-            coReadFile("coroutine-test-path")
-        } catch (exception: Exception) {
-            "Got error $exception"
-        }
-        println("Coroutine received $text")
-    }
+
 }
 
-suspend fun coReadFile(path: String): String = suspendCoroutine { continuation ->
-    readFile(path, object : ReadTextFileCallback {
-        override fun onSuccess(text: String) {
-            continuation.resume(text)
-        }
-
-        override fun onError(exception: Exception) {
-            continuation.resumeWithException(exception)
-        }
-    })
-}
+fun coReadFile(path: String): String = TODO(path)
