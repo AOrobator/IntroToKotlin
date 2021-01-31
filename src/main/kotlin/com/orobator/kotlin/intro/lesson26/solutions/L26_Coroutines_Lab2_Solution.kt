@@ -6,12 +6,21 @@ import kotlin.coroutines.resume
 import kotlin.coroutines.resumeWithException
 import kotlin.coroutines.suspendCoroutine
 
-// Given an API with callbacks convert it to use coroutines
+/**
+ * Given the [readFile] function and the [ReadTextFileCallback] interface,
+ * implement the function [coReadFile] that suspends instead of using a
+ * callback. Run your suspending function in a [runBlocking] coroutine scope in
+ * the main function.
+ */
 interface ReadTextFileCallback {
     fun onSuccess(text: String)
     fun onError(exception: Exception)
 }
 
+/**
+ * Let's pretend this function actually does file IO and fails about half the
+ * time.
+ */
 fun readFile(path: String, callback: ReadTextFileCallback) {
     val currentTime = System.currentTimeMillis().toInt()
     if (currentTime % 2 == 0) {
@@ -32,6 +41,7 @@ fun main() {
         }
     })
 
+    // Code Here 👇
     runBlocking {
         val text: String = try {
             coReadFile("coroutine-test-path")
