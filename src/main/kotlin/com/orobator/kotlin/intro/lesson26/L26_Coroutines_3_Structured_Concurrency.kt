@@ -72,6 +72,9 @@ fun structuredConcurrencyDemo() = runBlocking { // this: CoroutineScope
 // Structured concurrency is very useful because we don't have to call Job.join
 // all the time, but it also helps us out with cancellation. -> ELABORATE
 
+// A coroutine is always launched within a CoroutineScope. Coroutine builders
+// like launch and runBlocking give our coroutines a scope to run in.
+
  // - Close scope of viewModel, in between it launches a bunch of coroutines
 
 val foo = Thread().join()
