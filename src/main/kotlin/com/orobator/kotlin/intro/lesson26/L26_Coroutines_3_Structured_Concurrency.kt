@@ -1,8 +1,10 @@
 package com.orobator.kotlin.intro.lesson26
 
 import java.lang.Thread
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -69,11 +71,59 @@ fun structuredConcurrencyDemo() = runBlocking { // this: CoroutineScope
     println("Hello,")
 }
 
-// Structured concurrency is very useful because we don't have to call Job.join
-// all the time, but it also helps us out with cancellation. -> ELABORATE
-
 // A coroutine is always launched within a CoroutineScope. Coroutine builders
 // like launch and runBlocking give our coroutines a scope to run in.
+
+// Structured concurrency is very useful because we don't have to call Job.join
+// all the time, but it also helps us out with cancellation.
+
+// Let's pretend that we're writing a ViewModel that is responsible for the
+// business logic of a particular screen. In this example, we'll write
+// StockTickerViewModel which makes a network call to refresh the stock tickers
+// on screen every 5 seconds. We'll also be updating the price of Bitcoin every
+// 10 seconds. -> ELABORATE w/ ViewModelScope, lifecycle example
+
+class StockTickerViewModel {
+    // First we'll create our own CoroutineScope that we'll use to launch all of
+    // our coroutines in. The ViewModel provided in the Android Jetpack
+    // libraries provides us with a viewModelScope with a similar
+    // implementation.
+    private val viewModelScope: CoroutineScope = MainScope() // 👈 CMD+B to go to definition of MainScope
+
+    // When we go to the definition of MainScope, it looks like it's made out of
+    // 3 components: ContextScope, SupervisorJob, and Dispatchers.Main. Let's
+    // focus on SupervisorJob for now. Children of a supervisor job can fail
+    // independently of each other. A failure or cancellation of a child does
+    // not cause the supervisor job to fail and does not affect its other
+    // children.
+
+    var hasInitialized = false
+
+    fun init() {
+        if (hasInitialized) return
+
+        // Because children can fail independently, EXPLAIN ONE WON"T CRASH THE OTHER
+        viewModelScope.launch {
+            while (true) {
+                delay(5_000L)
+                // Fetch stocks
+                // TODO it'd be dope if you actually fetch real data and had a working view model
+            }
+        }
+
+        viewModelScope.launch {
+            while (true) {
+                delay(10_000L)
+                // Fetch BTC
+            }
+        }
+
+
+
+        hasInitialized = true
+    }
+}
+
 
  // - Close scope of viewModel, in between it launches a bunch of coroutines
 
