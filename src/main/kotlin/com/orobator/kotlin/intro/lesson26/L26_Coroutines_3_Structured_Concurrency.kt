@@ -2,20 +2,36 @@ package com.orobator.kotlin.intro.lesson26
 
 import java.lang.Thread
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.http.GET
+import com.google.gson.annotations.SerializedName
+import kotlinx.coroutines.cancel
+import kotlinx.coroutines.joinAll
+import kotlinx.coroutines.plus
+
 
 // Structured concurrency
 // See https://github.com/Kotlin/kotlinx.coroutines/blob/master/docs/basics.md
 // for more.
 
-fun main() {
+fun main() = runBlocking {
     jobJoinDemo()
     structuredConcurrencyDemo()
+
+    val viewModel = StockTickerViewModel(this)
+    viewModel.init()
+    delay(15_000)
+    viewModel.onDestroy()
+    joinAll()
+    println("Complete!")
 }
 
 /**
@@ -83,12 +99,33 @@ fun structuredConcurrencyDemo() = runBlocking { // this: CoroutineScope
 // on screen every 5 seconds. We'll also be updating the price of Bitcoin every
 // 10 seconds. -> ELABORATE w/ ViewModelScope, lifecycle example
 
-class StockTickerViewModel {
+data class NumberFact internal constructor(
+    @field:SerializedName("text") val text: String,
+    @field:SerializedName("number") val number: Double,
+    @field:SerializedName("found") val found: Boolean,
+    @field:SerializedName("type") val type: String
+)
+
+interface NumbersApi {
+    @GET("/random/math?json")
+    suspend fun getRandomMathFact(): NumberFact
+
+    @GET("/random/trivia?json")
+    suspend fun getRandomNumberFact(): NumberFact
+}
+
+class StockTickerViewModel(coroutineScope: CoroutineScope) {
     // First we'll create our own CoroutineScope that we'll use to launch all of
     // our coroutines in. The ViewModel provided in the Android Jetpack
     // libraries provides us with a viewModelScope with a similar
     // implementation.
-    private val viewModelScope: CoroutineScope = MainScope() // 👈 CMD+B to go to definition of MainScope
+    private val viewModelScope: CoroutineScope = coroutineScope + SupervisorJob()
+    private var isRunning = true
+
+    fun onDestroy() {
+        isRunning = false
+        viewModelScope.cancel()
+    }
 
     // When we go to the definition of MainScope, it looks like it's made out of
     // 3 components: ContextScope, SupervisorJob, and Dispatchers.Main. Let's
@@ -97,35 +134,39 @@ class StockTickerViewModel {
     // not cause the supervisor job to fail and does not affect its other
     // children.
 
-    var hasInitialized = false
-
     fun init() {
-        if (hasInitialized) return
+        val numbersApi: NumbersApi = Retrofit.Builder()
+            .baseUrl("http://numbersapi.com/")
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+            .create(NumbersApi::class.java)
 
         // Because children can fail independently, EXPLAIN ONE WON"T CRASH THE OTHER
         viewModelScope.launch {
-            while (true) {
-                delay(5_000L)
-                // Fetch stocks
-                // TODO it'd be dope if you actually fetch real data and had a working view model
+            while (isRunning) {
+                val mathFact = numbersApi.getRandomMathFact()
+                println("Math Fact: $mathFact}\n")
+                delay(3_000L)
+
+                if (System.currentTimeMillis() % 2 == 0L) {
+                    throw IllegalStateException("Fail math fact")
+                }
             }
         }
 
         viewModelScope.launch {
-            while (true) {
-                delay(10_000L)
+            while (isRunning) {
+                val numberFact = numbersApi.getRandomNumberFact()
+                println("Number Fact: $numberFact\n")
+                delay(2_000L)
                 // Fetch BTC
             }
         }
-
-
-
-        hasInitialized = true
     }
 }
 
 
- // - Close scope of viewModel, in between it launches a bunch of coroutines
+// - Close scope of viewModel, in between it launches a bunch of coroutines
 
 val foo = Thread().join()
 // Compare to thread.join(), tracking all launched threads and having to manage them
