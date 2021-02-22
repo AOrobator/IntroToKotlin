@@ -2,7 +2,6 @@ package com.orobator.kotlin.intro.lesson26
 
 import java.lang.Thread
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
@@ -14,6 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import com.google.gson.annotations.SerializedName
 import kotlinx.coroutines.cancel
+import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.plus
 
@@ -26,7 +26,7 @@ fun main() = runBlocking {
     jobJoinDemo()
     structuredConcurrencyDemo()
 
-    val viewModel = StockTickerViewModel(this)
+    val viewModel = NumberFactViewModel(this)
     viewModel.init()
     delay(15_000)
     viewModel.onDestroy()
@@ -95,30 +95,20 @@ fun structuredConcurrencyDemo() = runBlocking { // this: CoroutineScope
 
 // Let's pretend that we're writing a ViewModel that is responsible for the
 // business logic of a particular screen. In this example, we'll write
-// StockTickerViewModel which makes a network call to refresh the stock tickers
-// on screen every 5 seconds. We'll also be updating the price of Bitcoin every
-// 10 seconds. -> ELABORATE w/ ViewModelScope, lifecycle example
+// NumberFactViewModel which continuously makes 2 network calls periodically.
+// The first call happens every 3 seconds and is a call to get a random math
+// fact. This call has around a 50% chance of failing when called. The second
+// call happens every 2 seconds and is a call to get a random number fact.
+// -> ELABORATE w/ ViewModelScope, lifecycle example
 
-data class NumberFact internal constructor(
-    @field:SerializedName("text") val text: String,
-    @field:SerializedName("number") val number: Double,
-    @field:SerializedName("found") val found: Boolean,
-    @field:SerializedName("type") val type: String
-)
-
-interface NumbersApi {
-    @GET("/random/math?json")
-    suspend fun getRandomMathFact(): NumberFact
-
-    @GET("/random/trivia?json")
-    suspend fun getRandomNumberFact(): NumberFact
-}
-
-class StockTickerViewModel(coroutineScope: CoroutineScope) {
+class NumberFactViewModel(coroutineScope: CoroutineScope) {
     // First we'll create our own CoroutineScope that we'll use to launch all of
     // our coroutines in. The ViewModel provided in the Android Jetpack
     // libraries provides us with a viewModelScope with a similar
-    // implementation.
+    // implementation. Here we take our given coroutine scope and add a
+    // SupervisorJob to it. Children of a supervisor job can fail independently
+    // of each other. This will come in handy because we don't want a failed
+    // call to fail the other network call.
     private val viewModelScope: CoroutineScope = coroutineScope + SupervisorJob()
     private var isRunning = true
 
@@ -144,6 +134,7 @@ class StockTickerViewModel(coroutineScope: CoroutineScope) {
         // Because children can fail independently, EXPLAIN ONE WON"T CRASH THE OTHER
         viewModelScope.launch {
             while (isRunning) {
+                ensureActive()
                 val mathFact = numbersApi.getRandomMathFact()
                 println("Math Fact: $mathFact}\n")
                 delay(3_000L)
@@ -156,10 +147,10 @@ class StockTickerViewModel(coroutineScope: CoroutineScope) {
 
         viewModelScope.launch {
             while (isRunning) {
+                ensureActive()
                 val numberFact = numbersApi.getRandomNumberFact()
                 println("Number Fact: $numberFact\n")
                 delay(2_000L)
-                // Fetch BTC
             }
         }
     }

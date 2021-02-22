@@ -1,6 +1,8 @@
 package com.orobator.kotlin.intro.lesson26
 
+import com.google.gson.annotations.SerializedName
 import com.orobator.kotlin.intro.lesson11.User
+import retrofit2.http.GET
 
 // Ideal World
 class Coffee
@@ -29,3 +31,19 @@ object FakeRx {
 fun handleError(throwable: Throwable) = Unit
 fun getUser(token: Any, s: String) = Unit
 fun getToken(s: String) = FakeRx
+
+// Structured Concurrency
+data class NumberFact internal constructor(
+    @SerializedName("text") val text: String,
+    @SerializedName("number") val number: Double,
+    @SerializedName("found") val found: Boolean,
+    @SerializedName("type") val type: String
+)
+
+interface NumbersApi {
+    @GET("/random/math?json")
+    suspend fun getRandomMathFact(): NumberFact
+
+    @GET("/random/trivia?json")
+    suspend fun getRandomNumberFact(): NumberFact
+}
