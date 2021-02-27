@@ -15,3 +15,5 @@ package com.orobator.kotlin.intro.lesson26.solutions
 // - Can easily wait for all coroutines to finish or cancel them
 
 // - Makes it easier to reason about the lifecycle of coroutines.
+
+// - Structured concurrency makes it harder to leak coroutines

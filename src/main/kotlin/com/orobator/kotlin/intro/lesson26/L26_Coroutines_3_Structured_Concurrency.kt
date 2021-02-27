@@ -8,12 +8,8 @@ import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.GET
-import com.google.gson.annotations.SerializedName
+import java.io.IOException
 import kotlinx.coroutines.cancel
-import kotlinx.coroutines.ensureActive
 import kotlinx.coroutines.joinAll
 import kotlinx.coroutines.plus
 
@@ -42,7 +38,8 @@ fun main() = runBlocking {
  */
 
 fun jobJoinDemo() = runBlocking {
-    val job: Job = GlobalScope.launch { // launch a new coroutine and keep a reference to its Job
+    // launch a new coroutine and keep a reference to its Job
+    val job: Job = GlobalScope.launch {
         delay(1000L)
         println("World!")
     }
@@ -114,16 +111,8 @@ class NumberFactViewModel(coroutineScope: CoroutineScope) {
     // ViewModel is destroyed.
     private val viewModelScope: CoroutineScope = coroutineScope + SupervisorJob()
 
-    fun onDestroy() {
-        viewModelScope.cancel()
-    }
-
     fun init() {
-        val numbersApi: NumbersApi = Retrofit.Builder()
-            .baseUrl("http://numbersapi.com/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-            .create(NumbersApi::class.java)
+        val numbersApi = NumbersApi()
 
         // Because children can fail independently, when getRandomMathFact fails,
         // getRandomNumberFact calls can still finish successfully.
@@ -133,6 +122,7 @@ class NumberFactViewModel(coroutineScope: CoroutineScope) {
                 println("Math Fact: $mathFact}\n")
                 delay(3_000L)
 
+                // 50% chance of "failing" this call
                 if (System.currentTimeMillis() % 2 == 0L) {
                     throw IllegalStateException("Fail math fact")
                 }
@@ -141,11 +131,23 @@ class NumberFactViewModel(coroutineScope: CoroutineScope) {
 
         viewModelScope.launch {
             while (true) {
-                val numberFact = numbersApi.getRandomNumberFact()
+                // With coroutines, exception handling is as simple as try/catch
+                val numberFact = try {
+                    numbersApi.getRandomNumberFact()
+                } catch (e: IOException) {
+                    e.printStackTrace()
+                    null
+                }
                 println("Number Fact: $numberFact\n")
                 delay(2_000L)
             }
         }
+    }
+
+    fun onDestroy() {
+        // By cancelling the parent scope, we cancel the children coroutines by
+        // sending them a CancellationException.
+        viewModelScope.cancel()
     }
 }
 

@@ -2,6 +2,8 @@ package com.orobator.kotlin.intro.lesson26
 
 import com.google.gson.annotations.SerializedName
 import com.orobator.kotlin.intro.lesson11.User
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 // Ideal World
@@ -46,4 +48,14 @@ interface NumbersApi {
 
     @GET("/random/trivia?json")
     suspend fun getRandomNumberFact(): NumberFact
+
+    companion object {
+        operator fun invoke(): NumbersApi {
+            return Retrofit.Builder()
+                .baseUrl("http://numbersapi.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build()
+                .create(NumbersApi::class.java)
+        }
+    }
 }
