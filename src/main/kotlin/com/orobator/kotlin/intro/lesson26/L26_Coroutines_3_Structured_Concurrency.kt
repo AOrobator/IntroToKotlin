@@ -111,19 +111,10 @@ class NumberFactViewModel(coroutineScope: CoroutineScope) {
     // coroutines in this scope, so we can cancel all of our coroutines when
     // this ViewModel is destroyed.
     private val viewModelScope: CoroutineScope = coroutineScope + SupervisorJob()
-    private var isRunning = true
 
     fun onDestroy() {
-        isRunning = false
         viewModelScope.cancel()
     }
-
-    // When we go to the definition of MainScope, it looks like it's made out of
-    // 3 components: ContextScope, SupervisorJob, and Dispatchers.Main. Let's
-    // focus on SupervisorJob for now. Children of a supervisor job can fail
-    // independently of each other. A failure or cancellation of a child does
-    // not cause the supervisor job to fail and does not affect its other
-    // children.
 
     fun init() {
         val numbersApi: NumbersApi = Retrofit.Builder()
@@ -132,10 +123,10 @@ class NumberFactViewModel(coroutineScope: CoroutineScope) {
             .build()
             .create(NumbersApi::class.java)
 
-        // Because children can fail independently, EXPLAIN ONE WON"T CRASH THE OTHER
+        // Because children can fail independently, when getRandomMathFact fails,
+        // getRandomNumberFact calls can still finish successfully.
         viewModelScope.launch {
-            while (isRunning) {
-                ensureActive()
+            while (true) {
                 val mathFact = numbersApi.getRandomMathFact()
                 println("Math Fact: $mathFact}\n")
                 delay(3_000L)
@@ -147,8 +138,7 @@ class NumberFactViewModel(coroutineScope: CoroutineScope) {
         }
 
         viewModelScope.launch {
-            while (isRunning) {
-                ensureActive()
+            while (true) {
                 val numberFact = numbersApi.getRandomNumberFact()
                 println("Number Fact: $numberFact\n")
                 delay(2_000L)
@@ -156,20 +146,6 @@ class NumberFactViewModel(coroutineScope: CoroutineScope) {
         }
     }
 }
-
-
-// - Close scope of viewModel, in between it launches a bunch of coroutines
-
-val foo = Thread().join()
-// Compare to thread.join(), tracking all launched threads and having to manage them
-
-// Instead use scopes. coroutine builders (examples) give your coroutines a scope to run in
-
-// lambda with receiver type as parameter to coroutine builder
-
-// mention GlobalScope
-
-// show code with running coroutine getting cancelled? throw in some scopes?
 
 ///////////////
 // Benefits
