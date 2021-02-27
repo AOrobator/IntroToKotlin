@@ -97,9 +97,8 @@ fun structuredConcurrencyDemo() = runBlocking { // this: CoroutineScope
 // business logic of a particular screen. In this example, we'll write
 // NumberFactViewModel which continuously makes 2 network calls periodically.
 // The first call happens every 3 seconds and is a call to get a random math
-// fact. This call has around a 50% chance of failing when called. The second
-// call happens every 2 seconds and is a call to get a random number fact.
-// -> ELABORATE w/ ViewModelScope, lifecycle example
+// fact. This call has a 50% chance of failing when called. The second call
+// happens every 2 seconds and is a call to get a random number fact.
 
 class NumberFactViewModel(coroutineScope: CoroutineScope) {
     // First we'll create our own CoroutineScope that we'll use to launch all of
@@ -108,7 +107,9 @@ class NumberFactViewModel(coroutineScope: CoroutineScope) {
     // implementation. Here we take our given coroutine scope and add a
     // SupervisorJob to it. Children of a supervisor job can fail independently
     // of each other. This will come in handy because we don't want a failed
-    // call to fail the other network call.
+    // call to fail the other network call. We'll also start all of our
+    // coroutines in this scope, so we can cancel all of our coroutines when
+    // this ViewModel is destroyed.
     private val viewModelScope: CoroutineScope = coroutineScope + SupervisorJob()
     private var isRunning = true
 
