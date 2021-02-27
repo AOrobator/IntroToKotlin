@@ -107,9 +107,11 @@ class NumberFactViewModel(coroutineScope: CoroutineScope) {
     // implementation. Here we take our given coroutine scope and add a
     // SupervisorJob to it. Children of a supervisor job can fail independently
     // of each other. This will come in handy because we don't want a failed
-    // call to fail the other network call. We'll also start all of our
-    // coroutines in this scope, so we can cancel all of our coroutines when
-    // this ViewModel is destroyed.
+    // call to fail the other network call. Under normal circumstances, if a
+    // child fails with an exception other than CancellationException, this
+    // cancels the parent. We'll also start all of our coroutines in
+    // viewModelScope, so we can cancel all of our coroutines when this
+    // ViewModel is destroyed.
     private val viewModelScope: CoroutineScope = coroutineScope + SupervisorJob()
 
     fun onDestroy() {

@@ -6,8 +6,6 @@ package com.orobator.kotlin.intro.lesson26
 // Cancelling the parent cancels the children -> throws
 // CancellationException to kids
 
-// If a child fails with an exception other than
-// CancellationException, this cancels the parent
 
 // Parent Scope waits for children to complete
 
