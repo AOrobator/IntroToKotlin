@@ -1,5 +1,6 @@
 package com.orobator.kotlin.intro.lesson26
 
+import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -11,9 +12,12 @@ import kotlinx.coroutines.runBlocking
 
 fun main() {
     cancelDemo()
+    nonCooperativeCancellationDemo()
 }
 
+//////////////////////////////////
 // Cancelling coroutine execution
+
 // In a long-running application you might need fine-grained control on your
 // background coroutines. For example, a user might have closed the page that
 // launched a coroutine and now its result is no longer needed and its operation
@@ -46,7 +50,36 @@ fun cancelDemo() = runBlocking {
 // coroutine because it was cancelled. There is also a Job extension function
 // cancelAndJoin that combines cancel and join invocations.
 
+
+///////////////////////////////
 // Cancellation is cooperative
+
+fun nonCooperativeCancellationDemo() = runBlocking {
+    val startTime = System.currentTimeMillis()
+    val job = launch {
+        var nextPrintTime = startTime
+        var i = 0
+        while (i < 5) { // computation loop, just wastes CPU
+            // print a message twice a second
+            if (System.currentTimeMillis() >= nextPrintTime) {
+                println("job: I'm sleeping ${i++} ...")
+                nextPrintTime += 500L
+            }
+        }
+    }
+    delay(1300L) // delay a bit
+    println("main: I'm tired of waiting!")
+    job.cancelAndJoin() // cancels the job and waits for its completion
+    println("main: Now I can quit.")
+}
+
+// Run it to see that it continues to print "I'm sleeping" even after
+// cancellation until the job completes by itself after five iterations.
+
+
+
+
+
   // - show example of child not cancelling when parent cancels
 // Review exception behavior for CoroutineScope.launch
 // SupervisorJob vs regular (parent/child relationship)
