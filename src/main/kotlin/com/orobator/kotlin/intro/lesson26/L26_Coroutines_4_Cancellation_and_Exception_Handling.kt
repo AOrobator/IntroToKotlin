@@ -1,7 +1,9 @@
 package com.orobator.kotlin.intro.lesson26
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
@@ -13,6 +15,7 @@ import kotlinx.coroutines.runBlocking
 fun main() {
     cancelDemo()
     nonCooperativeCancellationDemo()
+    cooperativeCancellationDemo()
 }
 
 //////////////////////////////////
@@ -77,10 +80,37 @@ fun nonCooperativeCancellationDemo() = runBlocking {
 // cancellation until the job completes by itself after five iterations.
 
 
+///////////////////////////////////////
+// Making computation code cancellable
 
+// There are two approaches to making computation code cancellable. The first
+// one is to periodically invoke a suspending function that checks for
+// cancellation. There is a yield function that is a good choice for that
+// purpose. The other one is to explicitly check the cancellation status, which
+// is the approach we'll look into now.
 
+// Here, we're taking the non-cooperative example above, and replacing
+// "while (i < 5)" with "while (isActive)"
 
-  // - show example of child not cancelling when parent cancels
+fun cooperativeCancellationDemo() = runBlocking {
+    val startTime = System.currentTimeMillis()
+    val job = launch(Dispatchers.Default) {
+        var nextPrintTime = startTime
+        var i = 0
+        while (isActive) { // computation loop, just wastes CPU
+            // print a message twice a second
+            if (System.currentTimeMillis() >= nextPrintTime) {
+                println("job: I'm sleeping ${i++} ...")
+                nextPrintTime += 500L
+            }
+        }
+    }
+    delay(1300L) // delay a bit
+    println("main: I'm tired of waiting!")
+    job.cancelAndJoin() // cancels the job and waits for its completion
+    println("main: Now I can quit.")
+}
+
 // Review exception behavior for CoroutineScope.launch
 // SupervisorJob vs regular (parent/child relationship)
 // Exception behavior for async
