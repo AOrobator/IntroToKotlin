@@ -7,9 +7,9 @@ many language features from nullable properties to extension functions and Java
 interoperability.
 
 # Table of Contents
-1. [Getting Started](#Getting Started)
+1. [Getting Started](#getting_started)
 
-## Getting Started
+## Getting Started <a name="getting_started"></a>
 
 This course requires the following to get started:
 
