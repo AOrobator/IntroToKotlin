@@ -8,8 +8,9 @@ interoperability.
 
 # Table of Contents
 1. [Getting Started](#getting_started)
+2. [Project Structure](#project_structure)
 
-## Getting Started <a name="getting_started"></a>
+## Getting Started <a name="getting_started"/>
 
 This course requires the following to get started:
 
@@ -31,6 +32,8 @@ You should now be able to run L0_HelloWorld.kt
 via a green play button in the gutter.
 
 ![Run code][run_code]
+
+## Project Structure <a name="project_structure"/>
 
 [Git]: https://git-scm.com/downloads
 [kotlin_banner]: img/kotlin_banner.png "Kotlin Logo"
